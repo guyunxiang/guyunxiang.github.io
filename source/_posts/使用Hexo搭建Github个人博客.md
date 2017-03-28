@@ -11,8 +11,8 @@ tags: hexo
 
 ### 搭建准备
 
-* Node.js
-* Git & Github
+*   Node.js
+*   Git & Github
 
 Node.js安装方式很多，见 [如何安装Node.js](../如何安装Nodejs/) 文章
 Git 安装方法，见 [如何安装Git](../如何安装Git/) 文章
@@ -56,13 +56,13 @@ $ hexo new [layout] <title>
 $ npm i hexo-server --save
 ```
 
-** 启动服务 **
+**启动服务**
 
 ```bash
 $ hexo server
 ```
 
-** 实时刷新 **
+**实时刷新**
 
 安装 hexo-browsersync，监听文档变化，实时刷新页面
 
@@ -79,7 +79,7 @@ $ hexo server
 $ hexo generate
 ```
 
-** 监听文件变动 **
+**监听文件变动**
 
 ```bash
 $ hexo generate --watch

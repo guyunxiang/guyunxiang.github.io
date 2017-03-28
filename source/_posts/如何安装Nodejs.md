@@ -7,7 +7,7 @@ tags: node.js
 
 #### 安装 nvm
 
-** 下载 nvm **
+**下载 nvm**
 
 curl：
 ```bash
@@ -26,7 +26,7 @@ $ brew install nvm
 
 完成后 nvm 就安装在了 ~/.nvm 目录，需要为 nvm 配置环境变量，即可在终端使用 nvm 了。
 
-** 配置 nvm 环境变量 **
+**配置 nvm 环境变量**
 
 ```bash
 $ vim ~/.bash_profile
