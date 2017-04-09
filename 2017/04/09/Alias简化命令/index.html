@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="guyunxiang32@gmail.com"><title>Alias 简化命令 · 顾云翔</title><meta name="description" content="什么是 Alias?Alias 是 linux 内建命令，一种函数，功能是设置命令的别名。
+Alias 有什么用？
+自定义常用命令，简化命令输入长度
+装逼，菜鸟表示看不懂你在输什么
+
+设置常用的 git Aliasmac/linux编辑配置文件：
+$ vim ~/.bashrc
+
+添加 alias:"><meta name="keywords" content="Hexo,HTML,CSS,JavaScript,Elementaryos,Mac"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/atom-one-dark.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">顾云翔</a></h3><div class="description"><p>人生如逆旅，我亦是行人</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/guyunxiang" target="_block"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/guyunxiang" target="_block"><i class="fa fa-github"></i></a></li><li><a href="http://weibo.com/guyunxing32" target="_block"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><span>© <a href="/">2017 - 2018 顾云翔</a></span><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">published with Hexo !</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="https://avatars2.githubusercontent.com/u/7507079?v=3&amp;s=460"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h1><a>Alias 简化命令</a></h1></div><div class="post-information"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-09</span><i class="fa fa-comment-o"></i><a href="/2017/04/09/Alias简化命令/#comments">评论</a><i class="fa fa-tag"></i><a href="/tags/bash/" title="bash" class="tag">bash </a></div></div></div><div class="post-content"><h3 id="什么是-Alias"><a href="#什么是-Alias" class="headerlink" title="什么是 Alias?"></a>什么是 Alias?</h3><p>Alias 是 linux 内建命令，一种函数，功能是设置命令的别名。</p>
+<h3 id="Alias-有什么用？"><a href="#Alias-有什么用？" class="headerlink" title="Alias 有什么用？"></a>Alias 有什么用？</h3><ul>
+<li>自定义常用命令，简化命令输入长度</li>
+<li>装逼，菜鸟表示看不懂你在输什么</li>
+</ul>
+<h3 id="设置常用的-git-Alias"><a href="#设置常用的-git-Alias" class="headerlink" title="设置常用的 git Alias"></a>设置常用的 git Alias</h3><h4 id="mac-linux"><a href="#mac-linux" class="headerlink" title="mac/linux"></a>mac/linux</h4><p>编辑配置文件：</p>
+<pre><code class="bash">$ vim ~/.bashrc
+</code></pre>
+<p>添加 alias:</p>
+<pre><code class="bash">alias gss=&#39;git status&#39;
+</code></pre>
+<h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><h5 id="gitbash"><a href="#gitbash" class="headerlink" title="gitbash"></a>gitbash</h5><pre><code class="bash">$ cd ~
+$ vim .bashrc
+$ 同上
+</code></pre>
+<h5 id="cmd"><a href="#cmd" class="headerlink" title="cmd"></a>cmd</h5><p>在用户文件夹下创建alias.bat</p>
+<pre><code class="bash">$ cd c:\User\[用户名]
+$ vim alias.bat
+</code></pre>
+<p>添加alias规则</p>
+<pre><code class="bash">gss=git status
+</code></pre>
+<p>加入注册表</p>
+<pre><code class="bash">$ reg add &quot;hkcu\software\microsoft\command processor&quot; /v Autorun /t reg_sz /d &quot;doskey /macrofile=C:\Users\[用户名]\alias.bat&quot;
+</code></pre>
+<p>以上，即可在windows/mac/linux中自由使用alias装逼了。</p>
+<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p>windows环境下CMD运行：</p>
+<p><img src="/images/alias/windowsalias.png" alt=""></p>
+<blockquote>
+<p>在windows中，在文件夹中按住shift键+鼠标右击可以在当前目录下打开命令行<br><img src="/images/alias/opencmd.png" alt=""></p>
+</blockquote>
+<p>mac/linux环境下终端运行：</p>
+<p><img src="/images/alias/maclinuxalias.png" alt=""></p>
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,http://guyunxiang.github.io/2017/04/09/Alias简化命令/,顾云翔,Alias 简化命令,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/04/07/React组件间通讯/" title="React组件间通讯" class="btn">上一篇</a></li></ul></div><a id="comments"></a><div id="disqus_thread"></div><script>var disqus_shortname = 'guyunxiang';
+var disqus_identifier = '2017/04/09/Alias简化命令/';
+var disqus_title = 'Alias 简化命令';
+var disqus_url = 'http://guyunxiang.github.io/2017/04/09/Alias简化命令/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//guyunxiang.disqus.com/count.js" async></script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script></body></html>
