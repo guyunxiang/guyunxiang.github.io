@@ -433,6 +433,9 @@ a:hover, a:active {
 .list-with-title .listing {
   padding: 0;
 }
+.list-with-title .listing .listing-item {
+  overflow-y: hidden;
+}
 .list-with-title .listing .listing-post {
   padding-bottom: 5px;
 }
