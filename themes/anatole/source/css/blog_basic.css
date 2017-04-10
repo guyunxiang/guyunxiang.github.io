@@ -90,7 +90,8 @@ blockquote {
     border-left:#f2f2f2 .4em solid
 }
 blockquote p {
-    margin:.8em 0
+    margin:.8em 0;
+    color: #999;
 }
 blockquote small {
     display:inline-block;
