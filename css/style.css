@@ -5,7 +5,8 @@ html {
 }
 
 body {
-  color: rgba(0, 0, 0, 0.5);
+  /*color: rgba(0, 0, 0, 0.5);*/
+  color: #333;
   font-family: 'PingHei', 'PingFang SC', Helvetica Neue, 'Work Sans', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif;
   font-size: 15px;
   width: 100%;
@@ -167,7 +168,7 @@ a:hover, a:active {
 }
 .page-top .information .back_btn li {
   display: initial;
-  padding-right: 40px;
+  padding-right: 25px;
 }
 
 .sidebar {
@@ -288,7 +289,6 @@ a:hover, a:active {
 }
 .post .post-content h4 {
   color: #5F5F5F;
-  font-size: 16px;
 }
 .post .post-information {
   padding: 15px 0 0 0;
@@ -389,7 +389,7 @@ a:hover, a:active {
 
 #disqus_thread {
   margin: 30px;
-  border-bottom: 1px solid #f2f2f2;
+  /*border-bottom: 1px solid #f2f2f2;*/
 }
 
 .footer {
@@ -431,6 +431,9 @@ a:hover, a:active {
 }
 .list-with-title .listing {
   padding: 0;
+}
+.list-with-title .listing .listing-item {
+  overflow-y: hidden;
 }
 .list-with-title .listing .listing-post {
   padding-bottom: 5px;
