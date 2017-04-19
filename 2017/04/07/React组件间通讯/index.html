@@ -55,7 +55,7 @@ class Parent extends React.Component {
 <pre><code class="javascript">import Child1 from &#39;./Child1&#39;;
 import Child2 from &#39;./Child2&#39;;
 
-class Parent extends Component {
+class Parent extends React.Component {
 
   constructor(props) {
     super(props);
@@ -81,7 +81,7 @@ class Parent extends Component {
 }
 </code></pre>
 <p>Child1组件</p>
-<pre><code class="javascript">class Child1 extends Component {
+<pre><code class="javascript">class Child1 extends React.Component {
 
   constructor(props) {
     super(props);
@@ -102,7 +102,7 @@ class Parent extends Component {
 }
 </code></pre>
 <p>Child2组件</p>
-<pre><code class="javascript">class Child2 extends Component {
+<pre><code class="javascript">class Child2 extends React.Component {
   render() {
     return (
       &lt;div&gt;
@@ -120,7 +120,7 @@ class Parent extends Component {
 <p>Redux 内部的实现，其实也是基于观察者模式的，reducer 的调用结果，存储在 store 内部的 state 中，并在每一次 reducer 的调用中并作为参数传入。</p>
 </blockquote>
 <p>同样是兄弟组件之间通讯，用观察者模式进行改造，如下：</p>
-<pre><code class="javascript">class Parent extends Component {
+<pre><code class="javascript">class Parent extends React.Component {
   render() {
     return (
       &lt;div&gt;
@@ -134,7 +134,7 @@ class Parent extends Component {
 <p>Child1组件</p>
 <pre><code class="javascript">import eventProxy from &#39;./eventProxy&#39;;
 
-class Child1 extends Component {
+class Child1 extends React.Component {
   handleChange(e) {
     eventProxy.trigger(&#39;msg&#39;, e.target.value);
   }
@@ -149,7 +149,7 @@ class Child1 extends Component {
 }
 </code></pre>
 <p>Child2组件</p>
-<pre><code class="javascript">class Child2 extends Component {
+<pre><code class="javascript">class Child2 extends React.Component {
 
   constructor(props) {
     super(props);
