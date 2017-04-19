@@ -79,7 +79,7 @@ class Child extends React.Component {
 import Child1 from './Child1';
 import Child2 from './Child2';
 
-class Parent extends Component {
+class Parent extends React.Component {
 
   constructor(props) {
     super(props);
@@ -106,7 +106,7 @@ class Parent extends Component {
 ```
 Child1组件
 ```javascript
-class Child1 extends Component {
+class Child1 extends React.Component {
 
   constructor(props) {
     super(props);
@@ -128,7 +128,7 @@ class Child1 extends Component {
 ```
 Child2组件
 ```javascript
-class Child2 extends Component {
+class Child2 extends React.Component {
   render() {
     return (
       <div>
@@ -158,7 +158,7 @@ class Child2 extends Component {
 同样是兄弟组件之间通讯，用观察者模式进行改造，如下：
 
 ```javascript
-class Parent extends Component {
+class Parent extends React.Component {
   render() {
     return (
       <div>
@@ -173,7 +173,7 @@ Child1组件
 ```javascript
 import eventProxy from './eventProxy';
 
-class Child1 extends Component {
+class Child1 extends React.Component {
   handleChange(e) {
     eventProxy.trigger('msg', e.target.value);
   }
@@ -189,7 +189,7 @@ class Child1 extends Component {
 ```
 Child2组件
 ```javascript
-class Child2 extends Component {
+class Child2 extends React.Component {
 
   constructor(props) {
     super(props);
