@@ -1,6 +1,7 @@
 ---
 title: React组件间通讯
 date: 2017-04-07 11:35:28
+categories: 前端技术
 tags: react
 ---
 

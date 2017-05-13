@@ -1,6 +1,7 @@
 ---
 title: 多分支管理并部署hexo源码及静态资源文件
 date: 2017-03-28 22:47:06
+categories: 技术探讨
 tags: hexo
 ---
 #### 背景

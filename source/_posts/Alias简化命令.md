@@ -1,6 +1,7 @@
 ---
 title: Alias 简化命令
 date: 2017-04-09 18:05:58
+categories: 技术探讨
 tags: bash
 ---
 

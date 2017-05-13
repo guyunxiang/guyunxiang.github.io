@@ -1,6 +1,7 @@
 ---
 title: 设置国内npm镜像
 date: 2017-04-01 22:59:53
+categories: 技术探讨
 tags: npm
 ---
 

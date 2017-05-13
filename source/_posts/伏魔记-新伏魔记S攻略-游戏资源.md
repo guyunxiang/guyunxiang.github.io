@@ -1,7 +1,10 @@
 ---
 title: 伏魔记+新伏魔记S攻略+游戏资源
 date: 2017-04-05 22:02:46
-tags: [步步高游戏,伏魔记]
+categories: 游戏攻略
+tags:
+- 步步高游戏
+- 伏魔记
 ---
 
 ![伏魔记](/images/fumoji/fumoji.jpg)
