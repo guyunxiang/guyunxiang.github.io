@@ -7,7 +7,7 @@ body {
 	// color: rgba(0, 0, 0, 0.5);
 	color: #333;
 	font-family: 'PingHei', 'PingFang SC', Helvetica Neue, 'Work Sans', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif;
-	font-size: 15px;
+	font-size: 16px;
 	width: 100%;
 	margin: 0 auto 30px auto;
 	background-color: #fff;
@@ -329,12 +329,20 @@ a:hover, a:active {
 		}
 		h3{
 			color: #5F5F5F;
-			font-size:22px;
 			font-weight:600;
 		}
 		h4 {
 			color: #5F5F5F;
-			font-size:16px;
+		}
+		table {
+			border: 1px solid #f2f2f2;
+		  box-sizing: border-box;
+		  border-collapse: collapse;
+			th, td {
+				margin: 0;
+			  padding: 5px 10px;
+			  border: 1px solid #f2f2f2;
+			}
 		}
 	}
 
