@@ -8,7 +8,7 @@ body {
   /*color: rgba(0, 0, 0, 0.5);*/
   color: #333;
   font-family: 'PingHei', 'PingFang SC', Helvetica Neue, 'Work Sans', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   width: 100%;
   margin: 0 auto 30px auto;
   background-color: #fff;
@@ -284,11 +284,20 @@ a:hover, a:active {
 }
 .post .post-content h3 {
   color: #5F5F5F;
-  font-size: 22px;
   font-weight: 600;
 }
 .post .post-content h4 {
   color: #5F5F5F;
+}
+.post .post-content table {
+  border: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  border-collapse: collapse;
+}
+.post .post-content th, td {
+  margin: 0;
+  padding: 5px 10px;
+  border: 1px solid #f2f2f2;
 }
 .post .post-information {
   padding: 15px 0 0 0;
