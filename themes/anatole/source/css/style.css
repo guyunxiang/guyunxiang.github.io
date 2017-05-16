@@ -192,9 +192,9 @@ a:hover, a:active {
 
 .sidebar .followme {
   position: absolute;
-  left: -132px;
+  left: -50px;
   top: 32px;
-  width: 100%;
+  width: 200px;
   padding: 2px 0;
   transform: rotate(-45deg);
   text-align: center;
@@ -708,6 +708,9 @@ a.btn {
     position: absolute;
     border-right: none;
     z-index: 1;
+  }
+  .sidebar .followme {
+    display: none;
   }
   .sidebar .logo-title {
     padding-top: 120px;
