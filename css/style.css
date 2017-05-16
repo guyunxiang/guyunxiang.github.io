@@ -124,6 +124,8 @@ a:hover, a:active {
   background-color: #fff;
   height: 60px;
   border-bottom: 1px solid #f2f2f2;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .page-top .nav {
   list-style: none;
@@ -183,6 +185,8 @@ a:hover, a:active {
   position: fixed;
   z-index: 4;
   border-right: 1px solid #f2f2f2;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .sidebar .logo-title {
   text-align: center;
@@ -306,6 +310,8 @@ a:hover, a:active {
   max-width: 100%;
   height: 25px;
   color: #bbbbbb;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .post .post-information .meta .info {
   float: left;
@@ -398,6 +404,8 @@ a:hover, a:active {
 
 #disqus_thread {
   margin: 30px;
+  user-select: none;
+  -webkit-user-select: none;
   /*border-bottom: 1px solid #f2f2f2;*/
 }
 

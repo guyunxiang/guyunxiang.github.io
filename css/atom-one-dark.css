@@ -93,5 +93,16 @@ hue-6-2: #e6c07b
 }
 
 ::selection {
-	background-color: #929292;
+	background-color: #eaeaea;
+  color: #333;
+}
+
+code::selection {
+  background-color: #ffffff;
+  color: #333;
+}
+
+code span::selection {
+  background-color: #ffffff;
+  color: #333;
 }
