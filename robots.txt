@@ -1,0 +1,11 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /images/
+Disallow: /resource/
+
+Sitemap: http://guyunxiang.me/sitemap.xml
+Sitemap: http://guyunxiang.me/baidusitemap.xml
