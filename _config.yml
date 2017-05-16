@@ -67,3 +67,9 @@ theme: anatole
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
+
+# sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml  
