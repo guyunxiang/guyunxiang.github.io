@@ -13,7 +13,7 @@ tags: CSS
 
 支持多种IDE工具,Sublime/Atom/brackets
 
-详细配置说明[看这里](https://github.com/csscomb/csscomb.js/blob/master/doc/options.md)
+详细配置说明[看这里](https://github.com/csscomb/csscomb.js/blob/master/doc/options.md)。
 
 ### 整理的配置文件
 ```JSON
