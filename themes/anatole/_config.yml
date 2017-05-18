@@ -11,3 +11,11 @@ weibo: guyunxing32
 # Comment
 duoshuo:
 disqus: guyunxiang
+
+menu:
+  home: /
+  archives: /archives
+  tags: /tags
+  categories: /categories
+  about: /about
+  links: /links
