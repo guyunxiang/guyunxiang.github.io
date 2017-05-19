@@ -5,6 +5,8 @@ categories: 前端技术
 tags: CSS
 ---
 
+### 什么是 CSScomb ？
+
 [CSSComb](http://csscomb.com/) 是专门用来美化CSS代码的工具，可以定义自己的CSS风格，一键 format CSS代码。
 
 官方介绍：
@@ -14,6 +16,12 @@ tags: CSS
 支持多种IDE工具,Sublime/Atom/brackets
 
 详细配置说明[看这里](https://github.com/csscomb/csscomb.js/blob/master/doc/options.md)。
+
+### 如何使用
+
+在项目目录下建立.csscomb.json配置文件。添加指定配置内容。可以在csscomb的官网根据自己的个人习惯在线生成指定的配置内容。
+
+![](/images/frontend/csscomb.png)
 
 ### 整理的配置文件
 ```JSON
