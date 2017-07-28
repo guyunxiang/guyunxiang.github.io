@@ -115,6 +115,30 @@ mark {
     word-wrap: break-word;
     word-break: break-all;
 }
+
+.content > .post-page > .post > .tags-content {
+  margin-top: 15px;
+}
+
+.content > .post-page > .post > .tags-content > .tags-total {
+  text-align: right;
+}
+
+.content > .post-page > .post > .tags-content > .tags-total > .total {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.content > .post-page > .post > .tags-content > .tag {
+  font-size: 14px;
+  color: #333;
+  margin: 15px;
+}
+
+.content > .post-page > .post > .tags-content > .tag:hover {
+  text-decoration: underline;
+}
+
 #ds-thread {
     margin: 0 30px;
 }
