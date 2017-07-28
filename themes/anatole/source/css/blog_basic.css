@@ -116,6 +116,30 @@ mark {
     word-break: break-all;
 }
 
+.content > .post-page > .post > .categories-content {
+  margin-top: 15px;
+}
+
+.content > .post-page > .post > .categories-content > .categories-total {
+  text-align: right;
+}
+
+.content > .post-page > .post > .categories-content > .categories-total > .total {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.content > .post-page > .post > .categories-content > .categories {
+  display: inline-block;
+  font-size: 14px;
+  color: #333;
+  margin: 15px;
+}
+
+.content > .post-page > .post > .categories-content > .categories:hover {
+  text-decoration: underline;
+}
+
 .content > .post-page > .post > .tags-content {
   margin-top: 15px;
 }
@@ -130,9 +154,10 @@ mark {
 }
 
 .content > .post-page > .post > .tags-content > .tag {
+  display: inline-block;
   font-size: 14px;
   color: #333;
-  margin: 15px;
+  margin: 10px 15px;
 }
 
 .content > .post-page > .post > .tags-content > .tag:hover {

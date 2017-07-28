@@ -12,6 +12,8 @@ block content
     include mixins
     - if (page.path === 'tags/index.html')
       +make_tags(page)
+    - else if (page.path === 'categories/index.html')
+      +make_categories(page)
     - else
       +make_post(page, true)
     include partial/comments

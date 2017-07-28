@@ -41,13 +41,38 @@ mixin make_tags(item)
 					i.fa.fa-comment-o
 					a(href= url_for(item.path + "#comments"))= __('Comments')
 		.post-content.tags-content
+			- var tagList = [];
 			- Object.keys(site.tags.data).forEach(function(item){
-				a.tag(href='/tags/'+site.tags.data[item].name+'/', title= site.tags.data[item].name)= site.tags.data[item].name
+			-   tagList.push(site.tags.data[item].name);
+			- });
+			- tagList.sort().forEach(function(item){
+				a.tag(href='/tags/' + item + '/', title= item)= item
 			- });
 			p.tags-total
-				span 总共:
+				span 总共
 				span.total= site.tags.length
 				span 条标签
+				
+mixin make_categories(item)
+	.post.animated.fadeInDown
+		.post-title
+			h3
+				a(href= url_for(item.path))= item.title
+		.post-information: .meta
+			.info
+				i.fa.fa-sun-o
+				span.date= date(item.date, 'YYYY-MM-DD')
+				if theme.duoshuo || theme.disqus
+					i.fa.fa-comment-o
+					a(href= url_for(item.path + "#comments"))= __('Comments')
+		.post-content.categories-content
+			- Object.keys(site.categories.data).forEach(function(item){
+				a.categories(href='/categories/'+site.categories.data[item].name+'/', title= site.categories.data[item].name)= site.categories.data[item].name
+			- });
+			p.categories-total
+				span 总共
+				span.total= site.categories.length
+				span 种分类
 
 mixin make_pager()
 	- var prev = page.prev_link
