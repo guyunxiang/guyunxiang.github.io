@@ -10,9 +10,10 @@ block description
 block content
   .autopagerize_page_element: .content: .post-page
     include mixins
-    - if (page.path === 'tags/index.html')
+    - var pageCode = page.path.split('/index.html')[0];
+    - if (pageCode === 'tags')
       +make_tags(page)
-    - else if (page.path === 'categories/index.html')
+    - else if (pageCode === 'categories')
       +make_categories(page)
     - else
       +make_post(page, true)
