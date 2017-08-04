@@ -169,7 +169,7 @@ a:active {
   border-bottom: 1px solid #5a5a5a;
 }
 .page-top .information {
-  padding-top: 12px;
+  padding-top: 16px;
   padding-right: 20px;
   float: right;
 }
@@ -184,13 +184,62 @@ a:active {
   border-radius: 300px;
 }
 .page-top .information .back_btn {
+  margin-left: 20px;
   margin-right: -10px;
-  padding-top: 5px;
+  padding-top: 2px;
   float: left;
 }
 .page-top .information .back_btn li {
-  padding-right: 25px;
   display: initial;
+}
+
+.page-top .information .back_btn li a {
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+.page-top .information .search {
+  position: relative;
+  float: left;
+}
+
+.page-top .information .search input {
+  height: 28px;
+  width: 160px;
+  border: 1px solid #f2f2f2;
+  border-radius: 3px;
+  line-height: 28px;
+  color: #666;
+  padding-left: 10px;
+  padding-right: 30px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.page-top .information .search input::-webkit-input-placeholder {
+  color: #ddd;
+}
+.page-top .information .search input::-moz-placeholder {
+  color: #ddd;
+}
+.page-top .information .search input:-ms-input-placeholder {
+  color: #ddd;
+}
+.page-top .information .search input::placeholder {
+  color: #ddd;
+}
+
+.page-top .information .search i {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  color: #f2f2f2;
+  font-size: 14px;
+}
+
+.page-top .information .search i:hover {
+  color: #333;
+  cursor: pointer;
 }
 
 .sidebar {
