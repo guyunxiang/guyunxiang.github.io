@@ -73,6 +73,24 @@ mixin make_categories(item)
 				span 总共
 				span.total= site.categories.length
 				span 种分类
+				
+mixin make_search(item)
+	.post.animated.fadeInDown
+		.post-title
+			h3
+				a(href= url_for(item.path))= item.title
+		.post-information: .meta
+			.info
+				i.fa.fa-sun-o
+				span.date= date(item.date, 'YYYY-MM-DD')
+				if theme.duoshuo || theme.disqus
+					i.fa.fa-comment-o
+					a(href= url_for(item.path + "#comments"))= __('Comments')
+		.post-content.search-content
+			- if (searchVal)
+				p ok
+			- else
+				p 无
 
 mixin make_pager()
 	- var prev = page.prev_link

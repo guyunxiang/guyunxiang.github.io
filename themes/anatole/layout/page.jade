@@ -1,11 +1,11 @@
 extends partial/layout
 
 block site_title
-    != page.title + " · "
+  != page.title + " · "
 
 block description
-    - var desc = page.desc || strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150);
-    meta(name="description", content=desc)
+  - var desc = page.desc || strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150);
+  meta(name="description", content=desc)
 
 block content
   .autopagerize_page_element: .content: .post-page
@@ -15,6 +15,8 @@ block content
       +make_tags(page)
     - else if (pageCode === 'categories')
       +make_categories(page)
+    - else if (pageCode === 'search')
+      +make_search(page)
     - else
       +make_post(page, true)
     include partial/comments
