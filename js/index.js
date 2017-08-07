@@ -1,5 +1,7 @@
 $(function(){
 
+  var url = window.location.href;
+
   $('#search-input').on('keypress', function(e){
     if (e.keyCode == 13) {
       handleSearch($(this).val());
@@ -11,7 +13,13 @@ $(function(){
   });
 
   function handleSearch(value) {
-    window.location.href = '/search/?w='+ value
+    if (value) {
+      window.location.href = '/search/?w='+ value
+    }
+  }
+
+  if (url.indexOf('search') > -1) {
+    var searchVal = url.split('w=')[1];
   }
 
 });
