@@ -2,7 +2,8 @@
 title: webkit浏览器css设置滚动条样式
 date: 2014-08-06 11:02:06
 categories: 前端技术
-tags: CSS
+tags:
+- css
 ---
 
 ##### 主要有下面7个属性：

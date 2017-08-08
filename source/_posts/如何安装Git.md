@@ -2,7 +2,8 @@
 title: 如何安装Git
 date: 2017-03-24 23:11:55
 categories: 技术探讨
-tags: git
+tags:
+- git
 ---
 
 ### Windows

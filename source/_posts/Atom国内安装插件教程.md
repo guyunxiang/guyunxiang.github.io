@@ -3,7 +3,7 @@ title: Atom国内安装插件教程
 date: 2017-05-04 11:30:57
 categories: 技术探讨
 tags:
-- IDE
+- 开发工具
 - atom
 ---
 

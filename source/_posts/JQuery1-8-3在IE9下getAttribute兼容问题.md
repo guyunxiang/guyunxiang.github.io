@@ -3,8 +3,8 @@ title: JQuery1.8.3在IE9下getAttribute兼容问题
 date: 2014-12-05 11:00:06
 categories: 前端技术
 tags:
-- JavaScript
-- JQuery
+- javascript
+- jquery
 ---
 jQuery 1.8.3 在 IE9 下 attr 报错问题
 

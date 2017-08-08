@@ -33,13 +33,6 @@ mixin make_tags(item)
 		.post-title
 			h3
 				a(href= url_for(item.path))= item.title
-		.post-information: .meta
-			.info
-				i.fa.fa-sun-o
-				span.date= date(item.date, 'YYYY-MM-DD')
-				if theme.duoshuo || theme.disqus
-					i.fa.fa-comment-o
-					a(href= url_for(item.path + "#comments"))= __('Comments')
 		.post-content.tags-content
 			- var tagList = [];
 			- Object.keys(site.tags.data).forEach(function(item){
@@ -58,13 +51,6 @@ mixin make_categories(item)
 		.post-title
 			h3
 				a(href= url_for(item.path))= item.title
-		.post-information: .meta
-			.info
-				i.fa.fa-sun-o
-				span.date= date(item.date, 'YYYY-MM-DD')
-				if theme.duoshuo || theme.disqus
-					i.fa.fa-comment-o
-					a(href= url_for(item.path + "#comments"))= __('Comments')
 		.post-content.categories-content
 			- Object.keys(site.categories.data).forEach(function(item){
 				a.categories(href='/categories/'+site.categories.data[item].name+'/', title= site.categories.data[item].name)= site.categories.data[item].name

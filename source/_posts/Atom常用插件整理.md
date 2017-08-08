@@ -3,7 +3,7 @@ title: Atom常用插件整理
 date: 2017-04-20 11:19:33
 categories: 技术探讨
 tags:
-- IDE
+- 开发工具
 - atom
 ---
 

@@ -2,7 +2,8 @@
 title: HTML5调用手机相机拍照
 date: 2015-09-11 11:55:23
 categories: 前端技术
-tags: HTML5
+tags:
+- html5
 ---
 
 ### 前端调用手机相机拍照

@@ -2,7 +2,9 @@
 title: Mac配置终端git自动补全
 date: 2017-07-25 14:32:42
 categories: 技术探讨
-tags: macos
+tags:
+- macos
+- git
 ---
 对于终端的使用，最爽的自然是Linux下的终端，MacBook虽然也是Unix内核开发的系统，但是在终端上的体验还是较Linux上差一些，比如对于git命令的自动补全功能。
 

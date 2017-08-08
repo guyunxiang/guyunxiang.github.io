@@ -2,7 +2,8 @@
 title: 使用CSSComb美化样式代码
 date: 2017-05-18 22:29:30
 categories: 前端技术
-tags: CSS
+tags:
+- css
 ---
 
 ### 什么是 CSScomb ？
