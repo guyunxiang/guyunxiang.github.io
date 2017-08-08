@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>guyunxiang.me/2017/08/08/Mac%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%89%8B%E8%AE%B0/</loc>
+    <lastmod>2017-08-08T09:55:08.000Z</lastmod>
+    <data>
+        <display>
+        <title>Mac使用常见问题手记</title>
+        <pubTime>2017-08-08T09:51:12.000Z</pubTime>
+        
+        <tag>macos</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术探讨" url="guyunxiang.me/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E8%AE%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>guyunxiang.me/2011/06/06/%E6%88%91%E5%BE%88%E5%96%9C%E6%AC%A2/</loc>
     <lastmod>2017-08-08T02:22:53.000Z</lastmod>
     <data>
@@ -17,26 +37,6 @@
            
              
               <breadCrumb title="精美诗文" url="guyunxiang.me/categories/%E7%B2%BE%E7%BE%8E%E8%AF%97%E6%96%87/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>guyunxiang.me/2013/01/02/2013%EF%BC%8C%E8%B5%B0%E8%B5%B7/</loc>
-    <lastmod>2017-08-08T02:22:53.000Z</lastmod>
-    <data>
-        <display>
-        <title>2013，走起</title>
-        <pubTime>2013-01-02T08:15:05.000Z</pubTime>
-        
-        <tag>自述</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活记录" url="guyunxiang.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
           
         </display>
     </data>
@@ -150,19 +150,19 @@
 
     
   <url>
-    <loc>guyunxiang.me/2017/05/12/Mac%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%89%8B%E8%AE%B0/</loc>
+    <loc>guyunxiang.me/2013/01/02/2013%EF%BC%8C%E8%B5%B0%E8%B5%B7/</loc>
     <lastmod>2017-08-08T02:22:53.000Z</lastmod>
     <data>
         <display>
-        <title>Mac使用常见问题手记</title>
-        <pubTime>2017-05-12T07:55:12.000Z</pubTime>
+        <title>2013，走起</title>
+        <pubTime>2013-01-02T08:15:05.000Z</pubTime>
         
-        <tag>macos</tag>
+        <tag>自述</tag>
          
          
            
              
-              <breadCrumb title="技术探讨" url="guyunxiang.me/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E8%AE%A8/"/>
+              <breadCrumb title="生活记录" url="guyunxiang.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
           
         </display>
     </data>
