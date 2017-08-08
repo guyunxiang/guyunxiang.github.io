@@ -87,19 +87,32 @@ $ git commit -m "hexo generate"
 $ git push origin master
 ```
 
-注：此时远程master分支上就有了hexo 生成的静态文件，如果启用了Github Pages就可以通过your_name.github.io访问了博客了。
+到此，远程 master 分支上就有了 hexo 生成的静态文件，如果启用了 Github Pages 就可以通过 your_name.github.io 访问博客了。
 
-以上便是我通过source分支管理hexo 源码，通过master部署静态文件的方法。
+以上便是我通过 source 分支管理 hexo 源码，通过 master 部署静态文件的方法。
+
+---
+
+**注意**
+
+我在这里是执行拷贝出新生成的项目文件覆盖到 master 分支下的原项目文件，存在一个弊端，就是只增不减，由于 npm script 无法执行排除删除这种特殊的脚本，所以目前还没发现好的方式清理目录方法，暂时只能手动清理：
+
+```bash
+$ shopt -s extglob
+$ rm -rf !(node_modules|public)
+```
+我在这里为了清理目录，启用了 extglob 模式，删除了除 node_modules | public 文件夹以外的所有文件（会保留 .git | .gitignore）
+
 
 **彩蛋**
 
-为了方便步骤，我在package.json中配置执行脚本，方便快捷部署。配置如下：
+为了方便步骤，我在 package.json 中配置执行脚本，方便快捷部署。配置如下：
 
 ```json
 {
   ...
   "scripts": {
-    "deploy": "rm -rf public && hexo g && git add -A && git commit -m 'hexo generate' && git push origin source && git checkout master && cp -r public/. . && git add -A && git commit -m 'deploy master' && git push origin master && git checkout source"
+    "deploy": "rm -rf public && hexo g && git add -A && git commit -m 'hexo generate' && git push origin source && git checkout master && rm -rf !(node_modules|public) && cp -r public/. . && git add -A && git commit -m 'deploy master' && git push origin master && git checkout source"
   },
   ...
 }
