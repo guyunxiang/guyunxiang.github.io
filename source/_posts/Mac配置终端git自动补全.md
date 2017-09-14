@@ -49,3 +49,7 @@ source ~/.git-completion.bash
 重启终端，或者终端输入 `source ~/.bash_profile` 即可
 
 完成
+
+附：
+
+[终端忽略大小写自动补全](/2017/08/08/Mac使用常见问题手记/)
