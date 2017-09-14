@@ -1,0 +1,9 @@
+language: node_js
+install: true
+node_js:
+  - "node"
+cache:
+  directories:
+    - "node_modules"
+install:
+  - npm install
