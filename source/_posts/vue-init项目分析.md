@@ -3,8 +3,8 @@ title: vue-init 项目分析：前篇
 date: 2017-08-07 18:15:24
 categories: 前端技术
 tags:
-- vue
-- webpack
+-   vue
+-   webpack
 ---
 
 > Vue.js（读音 /vjuː/，类似于 view） 是一套构建用户界面的渐进式框架。与其他重量级框架不同的是，Vue 采用自底向上增量开发的设计。Vue 的核心库只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与单文件组件和 Vue 生态系统支持的库结合使用时，Vue 也完全能够为复杂的单页应用程序提供驱动。
@@ -178,4 +178,4 @@ module.exports = {
 
 以上，是对 vue init 的骨架项目根目录下的配置文件介绍。
 
-还有关于 webpack ，source 源码，vue-router 以及 NightWatch & Karma + Mocha 测试框架，见后续文章。
+还有关于 webpack ，source 源码，vue-router 以及 NightWatch & Karma + Mocha 测试框架，见后续[文章](/2017/08/09/vue-init项目分析2/)。
