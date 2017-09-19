@@ -72,6 +72,8 @@ $ npm i hexo-browsersync --save
 $ hexo server
 ```
 
+> 注：hexo-browsersync 插件会导致当调试阶段编写文章过长时，超出的部分乱码，[issue地址](https://github.com/hexojs/hexo/issues/2149)，如果习惯长文的，建议手动刷新。
+
 #### 生成器
 
 使用 hexo generate 生成静态文件
