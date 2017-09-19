@@ -1,0 +1,22 @@
+<div class="post animated fadeInDown">
+  <div class="post-title">
+    <h3>
+      <a href="<%= url_for(page.path)%>"><%= page.title %></a>
+    </h3>
+  </div>
+  <div class="post-content categories-content">
+    <% Object.keys(site.categories.data).forEach(function(item) { %>
+      <a
+        class="categories"
+        href="/categories/<%= site.categories.data[item].name %>/"
+        title="<%= site.categories.data[item].name %>">
+        <%= site.categories.data[item].name %>
+      </a>
+    <% }) %>
+    <p class="categories-total">
+      <span>总共</span>
+      <span class="total"><%= site.categories.length %></span>
+      <span>种分类</span>
+    </p>
+  </div>
+</div>

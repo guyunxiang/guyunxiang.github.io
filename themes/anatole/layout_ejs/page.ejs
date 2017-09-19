@@ -1,0 +1,15 @@
+<div class="autopagerize_page_element">
+  <div class="content">
+    <div class="post-page">
+      <% var pageCode = page.path.split('/index.html')[0] %>
+      <% if (pageCode === 'tags') { %>
+        <%- partial('posts/maketag') %>
+      <% } else if (pageCode === 'categories') { %>
+        <%- partial('posts/makecategories') %>
+      <% } else { %>
+        <%- partial('posts/makepost') %>
+        <%- partial('partial/comments') %>
+      <% } %>
+    </div>
+  </div>
+</div>

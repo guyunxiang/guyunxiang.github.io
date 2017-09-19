@@ -1,0 +1,13 @@
+<title>
+  <% if (is_archive()) { %>
+    <%= __('Archive') %>
+  <% } else if (is_category()) { %>
+    <%= __('Categories') %>
+  <% } else if (is_tag()) { %>
+    <%= __('Tags') %>
+  <% } else { %>
+    <%= page.title %>
+  <% } %>
+  " · "
+  <%= config.title %>
+</title>

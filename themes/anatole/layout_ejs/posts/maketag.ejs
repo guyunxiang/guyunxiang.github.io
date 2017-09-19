@@ -1,0 +1,21 @@
+<div class="post animated fadeInDown">
+  <div class="post-title">
+    <h3>
+      <a href="<%= url_for(page.path)%>"><%= page.title %></a>
+    </h3>
+  </div>
+  <div class="post-content tags-content">
+    <% var tagList = []; %>
+    <% Object.keys(site.tags.data).forEach(function(item) { %>
+      <% tagList.push(site.tags.data[item].name) %>
+    <% }) %>
+    <% tagList.sort().forEach(function(item) { %>
+      <a class="tag" href="/tags/<%= item %>/" title="<%= item %>"><%= item %></a>
+    <% }) %>
+    <p class="tags-total">
+      <span>总共</span>
+      <span class="total"><%= site.tags.length %></span>
+      <span>条标签</span>
+    </p>
+  </div>
+</div>

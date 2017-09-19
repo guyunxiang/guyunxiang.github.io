@@ -1,0 +1,29 @@
+<% if(theme.duoshuo) { %>
+  <a id="comments"></a>
+  <div class="ds-thread" data-thread-key="<%= page.path %>" data-title="<%= page.title %>" data-url="<%= page.premalink %>" data-author-key="1"></div>
+  <script>
+    var duoshuoQuery = {short_name:"#{theme.duoshuo}"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+<% } %>
+
+<% if(theme.disqus) { %>
+  <a id="comments"></a>
+  <div id="disqus_thread"></div>
+  <script>
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://<%= theme.disqus %>.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <script id="dsq-count-scr" src="//<%= theme.disqus %>.disqus.com/count.js" async></script>
+<% } %>

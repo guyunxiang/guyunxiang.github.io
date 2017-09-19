@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <%- partial('partial/head') %>
+  <body>
+    <%- partial('partial/sidebar') %>
+    <div class="main">
+      <%- partial('partial/nav') %>
+      <%- body %>
+    </div>
+    <script src="<%= url_for('js/jquery.js') %>"></script>
+    <script src="<%= url_for('js/jquery-migrate-1.2.1.min.js') %>"></script>
+    <script src="<%= url_for('js/jquery.appear.js') %>"></script>
+    <script src="<%= url_for('js/index.js') %>"></script>
+    <script src="<%= url_for('js/highlight.min.js') %>"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <script>
+      (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+  </body>
+</html>
