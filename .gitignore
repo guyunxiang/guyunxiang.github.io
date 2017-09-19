@@ -4,3 +4,4 @@ public/
 *.log
 .travis.yml
 README.md
+layout_ejs/
