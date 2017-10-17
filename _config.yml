@@ -73,3 +73,8 @@ sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
+
+# hexo-generator-search
+search:
+  path: search.json
+  field: post
