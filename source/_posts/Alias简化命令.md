@@ -2,7 +2,9 @@
 title: Alias 简化命令
 date: 2017-04-09 18:05:58
 categories: 技术探讨
-tags: bash
+tags:
+- bash
+- git
 ---
 
 ### 什么是 Alias?
@@ -29,6 +31,8 @@ $ vim ~/.bashrc
 ```bash
 alias gss='git status'
 ```
+
+> 注：如果重启命令行未生效，编辑 ~/.bash_profile 文件，添加 source ~/.bashrc 即可。
 
 #### Windows
 
@@ -75,3 +79,23 @@ windows环境下CMD运行：
 mac/linux环境下终端运行：
 
 ![](/images/alias/maclinuxalias.png)
+
+---
+
+**更新于2017年10月17日**
+
+常用 git alias 配置
+
+```bash
+alias gss='git status'
+alias gaa='git add -A'
+alias gcm='git commit -m'
+alias gpl='git pull'
+alias gps='git push'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gck='git checkout'
+alias gckb='git checkout -b'
+alias grshd='git reset --hard'
+alias gmg='git merge'
+```
