@@ -408,8 +408,7 @@ a:active {
   border: 1px solid #f2f2f2;
   border-collapse: collapse;
 }
-.post .post-content th,
-td {
+.post .post-content th, td {
   margin: 0;
   padding: 5px 10px;
 
@@ -821,6 +820,26 @@ a.btn {
   padding-top: 50px;
 
   text-align: center;
+}
+
+.search-content .listing {
+  padding: 0;
+}
+
+.search-content .listing .listing-item .list-post {
+  padding-bottom: 5px;
+  height: 25px;
+}
+
+.search-content .listing .listing-item .list-post a {
+  color: #8f8f8f;
+  font-size: 14px;
+}
+
+.search-content .listing .listing-item .list-post .post-time {
+  float: right;
+  color: #c5c5c5;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 960px) {
