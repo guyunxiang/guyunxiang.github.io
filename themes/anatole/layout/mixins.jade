@@ -73,10 +73,7 @@ mixin make_search(item)
 					i.fa.fa-comment-o
 					a(href= url_for(item.path + "#comments"))= __('Comments')
 		.post-content.search-content
-			- if (searchVal)
-				p ok
-			- else
-				p 无
+			p 加载中...
 
 mixin make_pager()
 	- var prev = page.prev_link
