@@ -1,50 +1,50 @@
 # Hexo Configuration
-## Docs: https://hexo.io/docs/configuration.html
-## Source: https://github.com/hexojs/hexo/
+## Docs:            https://hexo.io/docs/configuration.html
+## Source:          https://github.com/hexojs/hexo/
 
 # Site
-title: 顾云翔
-subtitle: guyunxiang
-description: I ain't gonna be just a face in crowd.
-author: guyunxiang
-language: zh-cn
+title:              顾云翔
+subtitle:           guyunxiang
+description:        I ain't gonna be just a face in crowd.
+author:             guyunxiang
+language:           zh-cn
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: guyunxiang.me
-root: /
-permalink: :year/:month/:day/:title/
+url:                guyunxiang.me
+root:               /
+permalink:          :year/:month/:day/:title/
 permalink_defaults:
 
 # Directory
-source_dir: source
-public_dir: public
-tag_dir: tags
-archive_dir: archives
-category_dir: categories
-code_dir: downloads/code
-i18n_dir: :lang
+source_dir:         source
+public_dir:         public
+tag_dir:            tags
+archive_dir:        archives
+category_dir:       categories
+code_dir:           downloads/code
+i18n_dir:           :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
-default_layout: post
-titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
-filename_case: 0
-render_drafts: false
-post_asset_folder: true
-relative_link: false
-future: true
+new_post_name:      :title.md # File name of new posts
+default_layout:     post
+titlecase:          false # Transform title into titlecase
+external_link:      true # Open external links in new tab
+filename_case:      0
+render_drafts:      false
+post_asset_folder:  true
+relative_link:      false
+future:             true
 highlight:
-  enable: false
-  line_number: false
-  auto_detect: false
+  enable:           false
+  line_number:      false
+  auto_detect:      false
   tab_replace:
 
 # Category & Tag
-default_category: uncategorized
+default_category:   uncategorized
 category_map:
 tag_map:
 
@@ -52,29 +52,52 @@ tag_map:
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
 ## http://momentjs.com/docs/#/displaying/format/
-date_format: YYYY-MM-DD
-time_format: HH:mm:ss
+date_format:        YYYY-MM-DD
+time_format:        HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 20
-pagination_dir: page
+per_page:           20
+pagination_dir:     page
 
 # Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
-theme: anatole
+## Plugins:         https://hexo.io/plugins/
+## Themes:          https://hexo.io/themes/
+theme:              anatole
 
 # Deployment
-## Docs: https://hexo.io/docs/deployment.html
+## Docs:            https://hexo.io/docs/deployment.html
 
 # sitemap
 sitemap:
-  path: sitemap.xml
+  path:             sitemap.xml
 baidusitemap:
-  path: baidusitemap.xml
+  path:             baidusitemap.xml
+
+# hexo-generator-json-content
+jsonContent:
+  meta:             false
+  keywords:         false
+  dateFormat:       'YYYY-MM-DD'
+  pages:            false
+  posts:
+    title:          true
+    slug:           false
+    date:           true
+    updated:        false
+    comments:       false
+    path:           true
+    link:           false
+    permalink:      false
+    excerpt:        false
+    keywords:       false
+    text:           true
+    raw:            false
+    content:        false
+    categories:     false
+    tags:           false
 
 # hexo-generator-search
 search:
-  path: search.json
-  field: post
+  path:             search.json
+  field:            post

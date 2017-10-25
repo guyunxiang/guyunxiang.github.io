@@ -25,7 +25,7 @@ $(function(){
       data.forEach(function(item) {
         if (
           item.title.indexOf(searchVal) > -1 ||
-          item.content.indexOf(searchVal) > -1
+          item.text.indexOf(searchVal) > -1
         ) {
           resultList.push(item);
         }
@@ -37,7 +37,7 @@ $(function(){
   // 获取所有文章列表
   function getList(callback) {
     $.ajax({
-      url: '../search.json',
+      url: '../content.json',
       type: 'GET',
       success: function(data) {
         callback(data);
@@ -53,21 +53,24 @@ $(function(){
         templateHtml +=
           '<div class="listing-item">' +
             '<div class="list-post">' +
-              '<a href="'+ item.url +'" title="'+ item.title +'">' +
+              '<a href="/'+ item.path +'" title="'+ item.title +'">' +
                 item.title +
               '</a>' +
               '<div class="post-time">' +
                 '<span class="date">' +
-                  item.url.match(/[0-9]{4}\/[0-9]{2}\/[0-9]{2}/g)[0].replace(/\//g, '-') +
+                  item.date +
                 '</span>' +
               '</div>' +
             '</div>' +
           '</div>';
       });
     } else {
-      templateHtml += '<p>未匹配到相应文章</p>';
+      templateHtml += '<p>返回首页重新搜索，<a href="/">点我</a></p>';
     }
     templateHtml += '</ul>';
+    $('.post-information > .meta > .info').append(
+      '本次共搜索到 ' + dataList.length + ' 条结果'
+    );
     $('.search-content').html(templateHtml);
   }
 

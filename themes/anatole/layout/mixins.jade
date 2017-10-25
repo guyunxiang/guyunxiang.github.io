@@ -67,11 +67,6 @@ mixin make_search(item)
 				a(href= url_for(item.path))= item.title
 		.post-information: .meta
 			.info
-				i.fa.fa-sun-o
-				span.date= date(item.date, 'YYYY-MM-DD')
-				if theme.duoshuo || theme.disqus
-					i.fa.fa-comment-o
-					a(href= url_for(item.path + "#comments"))= __('Comments')
 		.post-content.search-content
 			p 加载中...
 

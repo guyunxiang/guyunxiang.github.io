@@ -221,16 +221,16 @@ a:active {
 }
 
 .page-top .information .search input::-webkit-input-placeholder {
-  color: #ddd;
+  color: #5a5a5a;
 }
 .page-top .information .search input::-moz-placeholder {
-  color: #ddd;
+  color: #5a5a5a;
 }
 .page-top .information .search input:-ms-input-placeholder {
-  color: #ddd;
+  color: #5a5a5a;
 }
 .page-top .information .search input::placeholder {
-  color: #ddd;
+  color: #5a5a5a;
 }
 
 .page-top .information .search i {
