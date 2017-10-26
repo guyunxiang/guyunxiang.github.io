@@ -13,15 +13,17 @@ $(function(){
   });
 
   function handleSearch(value) {
-    if (value) {
+    if (value.trim()) {
       window.location.href = '/search/?w='+ value.trim();
     }
   }
 
+  // 判断是否是搜索页面
   if (url.indexOf('search') > -1) {
-    var searchVal = decodeURIComponent(url.split('w=')[1]);
+    var searchVal = getKeyword();
     var resultList = [];
-    getList(function(data) {
+    if (!searchVal) { window.location.href = '/'; }
+    $.get('../content.json', function(data) {
       data.forEach(function(item) {
         if (
           item.title.indexOf(searchVal) > -1 ||
@@ -34,15 +36,12 @@ $(function(){
     });
   }
 
-  // 获取所有文章列表
-  function getList(callback) {
-    $.ajax({
-      url: '../content.json',
-      type: 'GET',
-      success: function(data) {
-        callback(data);
-      }
-    });
+  // 判断是否存在搜索关键字
+  function getKeyword() {
+    var keywords = decodeURIComponent(url.split('w=')[1]);
+    if (url.indexOf('w=') < 0) { return null; }
+    if (keywords === '') { return null; }
+    return keywords;
   }
 
   // 渲染结果列表
@@ -68,9 +67,7 @@ $(function(){
       templateHtml += '<p>返回首页重新搜索，<a href="/">点我</a></p>';
     }
     templateHtml += '</ul>';
-    $('.post-information > .meta > .info').append(
-      '本次共搜索到 ' + dataList.length + ' 条结果'
-    );
+    $('.post-information > .meta > .info').append('本次共搜索到 ' + dataList.length + ' 条结果');
     $('.search-content').html(templateHtml);
   }
 
