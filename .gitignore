@@ -5,3 +5,4 @@ public/
 .travis.yml
 README.md
 layout_ejs/
+bin/
