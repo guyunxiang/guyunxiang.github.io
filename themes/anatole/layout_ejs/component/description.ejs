@@ -1,9 +1,0 @@
-<% if (is_archive()) { %>
-  <meta name="description" content="归档页面 - <%= config.title %>">
-<% } else if (is_category()) { %>
-  <meta name="description" content="分类 - <%= page.category %> - <%= config.title %>">
-<% } else if (is_tag()) { %>
-  <meta name="description" content="标签 - <%= page.tag %> - <%= config.title %>">
-<% } else { %>
-  <meta name="description" content="<%= page.desc || strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150) %>">
-<% } %>
