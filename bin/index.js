@@ -27,7 +27,7 @@ files.forEach(function(filename) {
   }
 });
 
-exec('cp public/* ./', function(err, stdout, stderr) {
+exec('cp -r public/. .', function(err, stdout, stderr) {
   if (err) {
     console.error(err);
     return;
