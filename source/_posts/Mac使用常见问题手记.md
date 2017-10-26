@@ -2,7 +2,8 @@
 title: Mac使用常见问题手记
 date: 2017-08-08 17:51:12
 categories: 技术探讨
-tags: macos
+tags:
+- macos
 ---
 ### 一、解压 rar 文件
 

@@ -3,8 +3,8 @@ title: vue-init 项目分析：中篇
 date: 2017-08-09 14:53:00
 categories: 前端技术
 tags:
--   vue
--   webpack
+- vue
+- webpack
 ---
 
 在上一篇[文章](/2017/08/07/vue-init项目分析/)中，我介绍 vue-init 初始化项目中根目录下的配置文件。这一篇着重介绍 vue-init 项目对于 webpack 的配置。

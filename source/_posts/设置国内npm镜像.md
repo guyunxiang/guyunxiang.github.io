@@ -2,7 +2,8 @@
 title: 设置国内npm镜像
 date: 2017-04-01 22:59:53
 categories: 技术探讨
-tags: npm
+tags:
+- npm
 ---
 
 npm全称Node Package Manager，是node.js的模块依赖管理工具。由于npm的源在国外，所以国内用户使用起来各种不方便。下面整理出了一部分国内优秀的npm镜像资源，国内用户可以选择使用。

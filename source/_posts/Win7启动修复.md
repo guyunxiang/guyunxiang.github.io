@@ -2,7 +2,8 @@
 title: Win7启动修复
 date: 2013-05-09 00:19:46
 categories: 技术探讨
-tags: 操作系统
+tags:
+- 操作系统
 ---
 ### Ubuntu删除后进入grub rescue的情况
 

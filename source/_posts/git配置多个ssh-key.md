@@ -2,7 +2,8 @@
 title: git配置多个ssh-key
 date: 2017-09-15 15:05:33
 categories: 技术探讨
-tags: git
+tags:
+- git
 ---
 
 许多 Git 服务器都使用 SSH 公钥进行认证。 为了向 Git 服务器提供 SSH 公钥，如果某系统用户尚未拥有密钥，必须事先为其生成一份。 这个过程在所有操作系统上都是相似的。
