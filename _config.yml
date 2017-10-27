@@ -90,7 +90,7 @@ jsonContent:
     link:           false
     permalink:      false
     excerpt:        false
-    keywords:       false
+    keywords:       true
     text:           true
     raw:            false
     content:        false

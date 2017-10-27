@@ -87,6 +87,8 @@ jsonContent:
 ```
 根据 title 和 text 便可以通过用户输入的内容进行匹配相应的文章，date 标识文章的日期，path 用以跳转文章页面。这四条基本数据是最基本的搜索要求了。
 
+hexo-generator-search 功能和 hexo-generator-json-content 类似，只是生成字段少，没 hexo-generator-json-content 强大。
+
 **2. 实现搜索功能**
 
 在首页添加搜索框，搜索按钮，获取用户输入的内容。为自己的 Hexo 博客添加搜索结果页面，这里需要对自己博客主题的源码进行修改。
