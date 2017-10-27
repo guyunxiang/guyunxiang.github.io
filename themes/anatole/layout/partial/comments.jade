@@ -27,3 +27,17 @@ if theme.disqus
 
 if theme.gitment.enable
   #gitment-container
+  script(src= url_for('js/gitment.browser.js'))
+  script.
+    (function(){
+      var gitment = new Gitment({
+        id: window.location.pathname, 
+        owner: 'guyunxiang',
+        repo: 'guyunxiang.github.io',
+        oauth: {
+          client_id: '8e90905eef1e8a7bfeb1',
+          client_secret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+        }
+      });
+      gitment.render('gitment-container');
+    })();
