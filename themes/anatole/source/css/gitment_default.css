@@ -53,11 +53,11 @@
 }
 
 .gitment-root-container {
-  margin: 19px 0;
+  margin: 20px 0;
 }
 
 .gitment-header-container {
-  margin: 19px 0;
+  margin: 20px 0;
 }
 
 .gitment-header-like-btn,
@@ -108,8 +108,8 @@ a.gitment-header-issue-link:hover {
 
 .gitment-comments-list {
   list-style: none;
+  margin: 20px 0;
   padding-left: 0;
-  margin: 0 0 38px;
 }
 
 .gitment-comment,
@@ -117,7 +117,7 @@ a.gitment-header-issue-link:hover {
   position: relative;
   min-height: 60px;
   padding-left: 60px;
-  margin: 19px 0;
+  margin: 20px 0;
 }
 
 .gitment-comment-avatar,
@@ -373,7 +373,7 @@ a.gitment-editor-footer-tip:hover {
   list-style: none;
   text-align: right;
   border-radius: 0;
-  margin: -19px 0 19px 0;
+  margin: -20px 0 20px 0;
 }
 
 .gitment-comments-page-item {
