@@ -157,7 +157,18 @@ function renderResultList(dataList) {
 <h3 id="待优化功能："><a href="#待优化功能：" class="headerlink" title="待优化功能："></a>待优化功能：</h3><p>1.搜索分词的处理，提高搜索的精确度，现在是最简单的字符串精确匹配且区分大小写，但有时候搜索的内容并不能精确表意，比如 ssh-key，搜 sshkey 则搜不到。</p>
 <p>2.渲染结果列表展示匹配到的内容，就像百度一样，搜索的结果又标题跟内容，在内容中高亮匹配到的内容，清晰了然，目前还仅仅只是展示了匹配到的文章标题。</p>
 <p>未完待续…</p>
-</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=guyunxiang.me/2017/10/26/为hexo添加自定义站内搜索功能/,顾云翔,为hexo添加自定义站内搜索功能" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/09/15/git配置多个ssh-key/" title="git配置多个ssh-key" class="btn">下一篇</a></li></ul></div><div id="gitment-container"></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script src="/js/gitment.browser.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=guyunxiang.me/2017/10/26/为hexo添加自定义站内搜索功能/,顾云翔,为hexo添加自定义站内搜索功能" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/09/15/git配置多个ssh-key/" title="git配置多个ssh-key" class="btn">下一篇</a></li></ul></div><div id="gitment-container"></div><script src="/js/gitment.browser.js"></script><script>(function(){
+  var gitment = new Gitment({
+    id: window.location.pathname, 
+    owner: 'guyunxiang',
+    repo: 'guyunxiang.github.io',
+    oauth: {
+      client_id: '8e90905eef1e8a7bfeb1',
+      client_secret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+    }
+  });
+  gitment.render('gitment-container');
+})();</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
@@ -173,15 +184,4 @@ function renderResultList(dataList) {
   }
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(bp, s);
-})();</script><script>(function(){
-  var gitment = new Gitment({
-    id: window.location.pathname, 
-    owner: 'guyunxiang',
-    repo: 'guyunxiang.github.io',
-    oauth: {
-      client_id: '8e90905eef1e8a7bfeb1',
-      client_secret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
-    }
-  });
-  gitment.render('gitment-container');
 })();</script></body></html>
