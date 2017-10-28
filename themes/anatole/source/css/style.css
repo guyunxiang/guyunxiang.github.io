@@ -868,6 +868,10 @@ a.btn {
   font-size: 14px;
 }
 
+#gitalk-container {
+  padding: 0 30px;
+}
+
 @media screen and (max-width: 400px) {
   .information .back_btn{
     display: none;
