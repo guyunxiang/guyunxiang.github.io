@@ -756,6 +756,7 @@
 }
 .gt-container .gt-ico-text {
   margin-left: 0.3125em;
+  font-size: 12px;
 }
 .gt-container .gt-ico-github .gt-svg {
   width: 100%;
@@ -835,6 +836,7 @@
   }
 }
 .gt-container .gt-btn {
+  margin-top: 1.25em;
   padding: 0.75em 1em;
   display: inline-block;
   line-height: 1;
@@ -888,7 +890,7 @@
   text-align: center;
 }
 .gt-container .gt-link {
-  border-bottom: 1px dotted #6190e8;
+  /*border-bottom: 1px dotted #6190e8;*/
 }
 .gt-container .gt-link-counts,
 .gt-container .gt-link-project {
@@ -1015,7 +1017,6 @@
 }
 .gt-container .gt-header-controls {
   position: relative;
-  margin: 0.75em 0 0;
 }
 .gt-container .gt-header-controls:before,
 .gt-container .gt-header-controls:after {
@@ -1074,7 +1075,7 @@
   z-index: 10000;
 }
 .gt-container .gt-comments {
-  padding-top: 1.25em;
+  padding: 0.625em 0;
 }
 .gt-container .gt-comments-null {
   text-align: center;
