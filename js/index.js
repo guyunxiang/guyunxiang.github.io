@@ -2,7 +2,7 @@ $(function(){
 
   var url = window.location.href;
 
-  $('#search-input').on('keypress', function(e){
+  $('.search > input').on('keypress', function(e){
     if (e.keyCode == 13) {
       handleSearch($(this).val());
     }
