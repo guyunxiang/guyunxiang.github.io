@@ -11,12 +11,12 @@
       else
         a(href="/archives")= __('Archive')
     li
-      if is_category()
+      if path.indexOf('categories') > -1
         a.current(href="/categories")= __('Categories')
       else
         a(href="/categories")= __('Categories')
     li
-      if is_tag()
+      if path.indexOf('tags') > -1
         a.current(href="/tags")= __('Tags')
       else
         a(href="/tags")= __('Tags')
@@ -32,7 +32,7 @@
         a(href="/links")= __('Links')		
   .information
     - if (path.split('/index.html')[0] === 'index.html')
-      .search
+      .search.search-pc
         input(id="search-input" type="text" placeholder="标题或内容" maxlength="100")
         i.fa.fa-search
     .back_btn

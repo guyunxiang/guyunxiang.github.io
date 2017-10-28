@@ -202,12 +202,12 @@ a:active {
   cursor: pointer;
 }
 
-.page-top .information .search {
+.search {
   position: relative;
   float: left;
 }
 
-.page-top .information .search input {
+.search input {
   height: 28px;
   width: 160px;
   border: 1px solid #f2f2f2;
@@ -220,20 +220,20 @@ a:active {
   outline: none;
 }
 
-.page-top .information .search input::-webkit-input-placeholder {
+.search input::-webkit-input-placeholder {
   color: #5a5a5a;
 }
-.page-top .information .search input::-moz-placeholder {
+.search input::-moz-placeholder {
   color: #5a5a5a;
 }
-.page-top .information .search input:-ms-input-placeholder {
+.search input:-ms-input-placeholder {
   color: #5a5a5a;
 }
-.page-top .information .search input::placeholder {
+.search input::placeholder {
   color: #5a5a5a;
 }
 
-.page-top .information .search i {
+.search i {
   position: absolute;
   right: 10px;
   top: 6px;
@@ -241,9 +241,34 @@ a:active {
   font-size: 14px;
 }
 
-.page-top .information .search i:hover {
+.search i:hover {
   color: #333;
   cursor: pointer;
+}
+
+.search-mobile {
+  display: none;
+  float: initial;
+  margin: 0 30px;
+}
+
+.search-mobile input {
+  height: 37px;
+  width: 100%;
+}
+
+.search-mobile i {
+  font-size: 16px;
+  top: 10px;
+}
+
+@media screen and (max-width: 515px) {
+  .search-pc {
+    display: none;
+  }
+  .search-mobile {
+    display: block;
+  }
 }
 
 .sidebar {
@@ -841,6 +866,12 @@ a.btn {
   float: right;
   color: #c5c5c5;
   font-size: 14px;
+}
+
+@media screen and (max-width: 400px) {
+  .information .back_btn{
+    display: none;
+  }
 }
 
 @media screen and (max-width: 960px) {

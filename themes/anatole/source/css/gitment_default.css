@@ -103,7 +103,7 @@ a.gitment-header-issue-link:hover {
 .gitment-comments-error,
 .gitment-comments-empty {
   text-align: center;
-  margin: 50px 0;
+  margin: 52px 0;
 }
 
 .gitment-comments-list {
@@ -425,9 +425,10 @@ a.gitment-editor-footer-tip:hover {
 
 .gitment-comments-init-btn:disabled,
 .gitment-editor-submit:disabled {
-  color: rgba(255,255,255,0.75);
+  color: #fff;
   background-color: #59bffe;
   box-shadow: none;
+  opacity: .7;
 }
 
 .gitment-editor-submit {
