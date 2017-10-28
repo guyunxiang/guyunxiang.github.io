@@ -2,16 +2,19 @@ $(function(){
 
   var url = window.location.href;
 
+  // 监听搜索框回车事件
   $('.search > input').on('keypress', function(e) {
     if (e.keyCode == 13) {
       handleSearch($(this).val());
     }
   });
 
+  // 监听搜索框搜索按钮点击事件
   $('.search .fa.fa-search').on('click', function() {
     handleSearch($(this).siblings('input').val());
   });
 
+  // 跳转搜索页面
   function handleSearch(value) {
     if (value.trim()) {
       window.location.href = '/search/?w='+ value.trim();
