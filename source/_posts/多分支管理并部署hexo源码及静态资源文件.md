@@ -124,3 +124,47 @@ $ rm -rf !(node_modules|public)
 ```bash
 $ npm run deploy
 ```
+
+---
+
+**更新于2017年10月31日**
+
+上文中写到 `rm -rf !(node_modules|public)` 需要打开 extglob 模式，开启方法 `shopt -s extglob`，这种方法有限制且不利于管理白名单的文件夹名称。
+
+于是考虑到用 Node.js 操作文件，遍历项目目录下的所有文件，然后根据文件名匹配白名单，删除所有非白名单的文件/文件夹。
+
+```javascript
+// bin/index.js
+
+'use strict';
+
+var fs = require('fs');
+var path = require('path');
+var exec = require('child_process').exec;
+var files = fs.readdirSync(path.resolve());
+var whitelist = [
+  '.git',
+  '.gitignore',
+  '.travis.yml',
+  'README.md',
+  'bin',
+  'node_modules',
+  'public'
+];
+
+files.forEach(function(filename) {
+  if (whitelist.indexOf(filename) < 0) {
+    exec('rm -rf ' + filename, function(err, stdout, stderr) {
+      if (err) { console.log(err); return; }
+    });
+  }
+});
+
+exec('cp -r public/. .', function(err, stdout, stderr) {
+  if (err) { console.error(err); return; }
+});
+```
+
+当 `hexo generate` 之后，切到 master 分支，运行 `node bin/index.js` 即可删除除了白名单的所有文件/文件夹。
+
+再复制所有的打包文件到根目录下。

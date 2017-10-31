@@ -28,6 +28,12 @@ layout 默认为 post, 可以不写。
 $ hexo new '如何用hexo搭建博客'
 ```
 
+写草稿：
+
+```bash
+$ hexo new draft '如何用hexo搭建博客'
+```
+
 **注意事项**
 
 类别：新建博客类别时，先参看已有的[分类](http://guyunxiang.me/categories/)，避免相似不同名的分类出现
@@ -48,6 +54,12 @@ $ hexo s
 
 ```bash
 $ hexo server -s
+```
+
+查看草稿的运行服务：
+
+```bash
+$ hexo server --drafts
 ```
 
 指定端口：
