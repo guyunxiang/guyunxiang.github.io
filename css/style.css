@@ -440,6 +440,12 @@ a:active {
 
   border: 1px solid #f2f2f2;
 }
+.post .post-content p code {
+  padding: .5em;
+  color: #383a42;
+  background-color: #fafafa;
+  overflow-x: auto;
+}
 .post .post-information {
   padding: 15px 0 0 0;
 }
