@@ -11,17 +11,10 @@ weibo: guyunxing32
 # Comment
 duoshuo:
 disqus:
-gitment:
-  enable: true
-  githubID: guyunxiang
-  repo: guyunxiang.github.io
-  ClientID: 8e90905eef1e8a7bfeb1
-  ClientSecret: b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d
-  lazy: true
 gitalk:
   enable: true
   owner: guyunxiang
-  admin: ['guyunxiang']
+  admin: guyunxiang
   repo: guyunxiang.github.io
   ClientID: 8e90905eef1e8a7bfeb1
   ClientSecret: b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d

@@ -31,11 +31,11 @@ if theme.gitalk.enable
   script.
     (function(){
       var gitalk = new Gitalk({
-        clientID: '8e90905eef1e8a7bfeb1',
-        clientSecret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
-        repo: 'guyunxiang.github.io',
-        owner: 'guyunxiang',
-        admin: ['guyunxiang']
+        clientID: '#{theme.gitalk.ClientID}',
+        clientSecret: '#{theme.gitalk.ClientSecret}',
+        repo: '#{theme.gitalk.repo}',
+        owner: '#{theme.gitalk.owner}',
+        admin: ['#{theme.gitalk.admin}']
       });
       gitalk.render('gitalk-container')
     })();

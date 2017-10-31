@@ -96,8 +96,3 @@ jsonContent:
     content:        false
     categories:     false
     tags:           false
-
-# hexo-generator-search
-search:
-  path:             search.json
-  field:            post

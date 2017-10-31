@@ -17,6 +17,7 @@ $(function(){
   // 跳转搜索页面
   function handleSearch(value) {
     if (value.trim()) {
+      $('.search > input').val('');
       window.location.href = '/search/?w='+ value.trim();
     }
   }
