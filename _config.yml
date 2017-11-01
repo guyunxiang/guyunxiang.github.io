@@ -77,7 +77,7 @@ baidusitemap:
 # hexo-generator-json-content
 jsonContent:
   meta:             false
-  keywords:         false
+  keywords:         true
   dateFormat:       'YYYY-MM-DD'
   pages:            false
   posts:
