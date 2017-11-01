@@ -26,12 +26,14 @@ $(function(){
   if (url.indexOf('search') > -1) {
     var searchVal = getKeyword();
     var resultList = [];
+    var el = document.createElement('div');
     if (!searchVal) { window.location.href = '/'; }
     $.get('../content.json', function(data) {
       data.forEach(function(item) {
+        el.innerHTML = item.text;
         if (
           item.title.indexOf(searchVal) > -1 ||
-          item.text.indexOf(searchVal) > -1
+          el.innerHTML.indexOf(searchVal) > -1
         ) {
           resultList.push(item);
         }
@@ -50,8 +52,9 @@ $(function(){
 
   // 渲染结果列表
   function renderResultList(dataList) {
-    var templateHtml = '<ul class="listing">';
+    var scEl = $('.search-content');
     if (dataList.length) {
+      var templateHtml = '<ul class="listing">';
       dataList.forEach(function(item) {
         templateHtml +=
           '<div class="listing-item">' +
@@ -67,12 +70,13 @@ $(function(){
             '</div>' +
           '</div>';
       });
+      templateHtml += '</ul>';
+      scEl.html(templateHtml);
     } else {
-      templateHtml += '<p>返回首页重新搜索，<a href="/">点我</a></p>';
+      scEl.find('.loading-result').hide();
+      scEl.find('.search-not-found').show();
     }
-    templateHtml += '</ul>';
-    $('.post-information > .meta > .info').append('本次共搜索到 ' + dataList.length + ' 条结果');
-    $('.search-content').html(templateHtml);
+    $('.post-information > .meta > .info').html('本次共搜索到 ' + dataList.length + ' 条结果');
   }
 
 });
