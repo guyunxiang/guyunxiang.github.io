@@ -262,12 +262,23 @@ a:active {
   top: 10px;
 }
 
-@media screen and (max-width: 515px) {
+@media screen and (max-width: 530px) {
   .search-pc {
     display: none;
   }
   .search-mobile {
     display: block;
+  }
+  .search-not-found .search {
+    width: 100%;
+  }
+  .search-not-found .search input {
+    height: 37px;
+    width: 100%;
+  }
+  .search-not-found .search i {
+    font-size: 16px;
+    top: 10px;
   }
 }
 
@@ -872,6 +883,12 @@ a.btn {
   float: right;
   color: #c5c5c5;
   font-size: 14px;
+}
+
+.search-content .search-not-found {
+  display: none;
+  margin: 1em 0;
+  overflow: hidden;
 }
 
 #gitalk-container {

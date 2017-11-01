@@ -32,7 +32,7 @@ mixin make_tags(item)
 	.post.animated.fadeInDown
 		.post-title
 			h3
-				a(href= url_for(item.path))= item.title
+				a= item.title
 		.post-content.tags-content
 			- var tagList = [];
 			- Object.keys(site.tags.data).forEach(function(item){
@@ -50,7 +50,7 @@ mixin make_categories(item)
 	.post.animated.fadeInDown
 		.post-title
 			h3
-				a(href= url_for(item.path))= item.title
+				a= item.title
 		.post-content.categories-content
 			- Object.keys(site.categories.data).forEach(function(item){
 				a.categories(href='/categories/'+site.categories.data[item].name+'/', title= site.categories.data[item].name)= site.categories.data[item].name
@@ -64,11 +64,15 @@ mixin make_search(item)
 	.post.animated.fadeInDown
 		.post-title
 			h3
-				a(href= url_for(item.path))= item.title
+				a= item.title
 		.post-information: .meta
-			.info
+			.info 正在匹配文章标题和内容...
 		.post-content.search-content
-			p 加载中...
+			p.loading-result 加载中...
+			.search-not-found
+				.search
+					input(type="text" placeholder="尝试重新搜索" maxlength="100")
+					i.fa.fa-search
 
 mixin make_pager()
 	- var prev = page.prev_link
