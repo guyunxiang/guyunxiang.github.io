@@ -4,6 +4,7 @@ date: 2017-03-24 21:25:13
 categories: 技术探讨
 tags:
 - hexo
+keywords: [Hexo, github, blog]
 ---
 网上关于hexo搭建博客的文章已经有很多，这里只做为个人博客的试笔文章，记录下hexo博客搭建的过程和心得。
 

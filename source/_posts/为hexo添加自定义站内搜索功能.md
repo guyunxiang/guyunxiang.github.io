@@ -4,7 +4,7 @@ date: 2017-10-26 14:59:33
 categories: 技术探讨
 tags:
 - hexo
-keywords: [hexo, hexo-generator-search, hexo-generator-json-content]
+keywords: [hexo, hexo-generator-search, hexo-generator-json-content, 自定义搜索, 站内搜索, 搜索功能]
 ---
 > Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
 
@@ -208,5 +208,13 @@ function renderResultList(dataList) {
 1.搜索分词的处理，提高搜索的精确度，现在是最简单的字符串精确匹配且区分大小写，但有时候搜索的内容并不能精确表意，比如 ssh-key，搜 sshkey 则搜不到。
 
 2.渲染结果列表展示匹配到的内容，就像百度一样，搜索的结果又标题跟内容，在内容中高亮匹配到的内容，清晰了然，目前还仅仅只是展示了匹配到的文章标题。
+
+**更新于2017年11月06日**
+
+1.搜索分词的优化，通过调整部分 `hexo-generator-json-content` 源码，在文章中添加 keywords 关键字，使之在生成 content.json 时包含我指定的 keywords，来手动分词可能被搜索的内容，达到搜索的准确性提高。
+
+2.渲染结果已高亮匹配的关键字，并从文章中包含关键字的位置截取部分内容作为概述展示在搜索结果中，调整了搜索结果列表页的样式。
+
+![](/images/article/WX20171106-164813.png)
 
 未完待续...

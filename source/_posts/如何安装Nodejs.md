@@ -4,6 +4,7 @@ date: 2017-03-24 21:44:38
 categories: 技术探讨
 tags:
 - nodejs
+keywords: [nodejs, node.js, nvm]
 ---
 安装Node.js的方式有很多，这里推荐使用 [nvm](https://github.com/creationix/nvm) 版本控制器进行安装。因为可以进行node.js版本管理，方便升级和倒退。
 
