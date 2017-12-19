@@ -35,7 +35,8 @@ if theme.gitalk.enable
         clientSecret: '#{theme.gitalk.ClientSecret}',
         repo: '#{theme.gitalk.repo}',
         owner: '#{theme.gitalk.owner}',
-        admin: ['#{theme.gitalk.owner}']
+        admin: ['#{theme.gitalk.owner}'],
+        id: '#{theme.gitalk.id}'
       });
       gitalk.render('gitalk-container')
     })();
