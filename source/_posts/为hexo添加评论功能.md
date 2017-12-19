@@ -86,3 +86,51 @@ gitment 接入跟 gitalk 接入一样。
 **自动初始化所有评论**
 
 有位朋友位这两个写了个 ruby 的脚本，根据 sitemap 或自定义URL名单自动初始化所有的评论，有兴趣的可以去看看，方便初始化评论 issue
+
+- - -
+
+**2017年12月19日更新**
+
+调整了 gitalk 配置项，默认配置 id 为 `location.href`，会带上域名，那我这个域名买着玩的，以后可能会换，那到时候迁移这个评论成本就高了，gitalk 会根据配置中的 labels 生成 github issue 的 label，同时还会根据 id 强制生成一个 label 来保证唯一性，所以这里需要改动一下 id 的配置值，不带域名，只保留路径以达到以后域名切换的便携性，同时，不带域名以后，在本地调试时也可以看到评论了。
+
+改动点1：
+
+```yml
+# themes/_config.yml
+
+# Comment
+duoshuo:
+disqus:
+gitalk:
+  enable: true
+  owner: 'github repo owner'
+  repo: 'github repo name'
+  ClientID: 'your ClientID'
+  ClientSecret: 'your ClientSecret'
+  id: location.pathname
+```
+
+改动点2：
+
+```jade
+// comments.jade
+
+if theme.gitalk.enable
+  #gitalk-container
+  script(src= url_for('js/gitalk.min.js'))
+  script.
+    (function(){
+      var gitalk = new Gitalk({
+        clientID: '#{theme.gitalk.ClientID}',
+        clientSecret: '#{theme.gitalk.ClientSecret}',
+        repo: '#{theme.gitalk.repo}',
+        owner: '#{theme.gitalk.owner}',
+        id: #{theme.gitalk.id}
+      });
+      gitalk.render('gitalk-container')
+    })();
+```
+
+改动点3：
+
+登录 github 进入博客项目，点击 issue 筛选 label，把带有域名的 label 编辑，删掉域名，保存，即可。
