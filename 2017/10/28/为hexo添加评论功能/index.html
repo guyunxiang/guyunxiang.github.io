@@ -57,6 +57,43 @@ if theme.gitalk.enable
 <p>两者在功能上相同，都是基于 github issue 的评论插件，安装方式也基本相同，gitalk 后来于 gitment，可以兼容 gitment 的评论，我一开始也是接入 gitment，似乎 gitment 的作者已经弃坑了，且无法兼容移动端，所以找到了 gitalk，gitalk 在样式稍显活力，gitment 更加简约，gitalk 可以快速的回复别人，gitment 则不行，所以，建议是选择 gitalk。</p>
 <p><strong>自动初始化所有评论</strong></p>
 <p>有位朋友位这两个写了个 ruby 的脚本，根据 sitemap 或自定义URL名单自动初始化所有的评论，有兴趣的可以去看看，方便初始化评论 issue</p>
+<hr>
+<p><strong>2017年12月19日更新</strong></p>
+<p>调整了 gitalk 配置项，默认配置 id 为 <code>location.href</code>，会带上域名，那我这个域名买着玩的，以后可能会换，那到时候迁移这个评论成本就高了，gitalk 会根据配置中的 labels 生成 github issue 的 label，同时还会根据 id 强制生成一个 label 来保证唯一性，所以这里需要改动一下 id 的配置值，不带域名，只保留路径以达到以后域名切换的便携性，同时，不带域名以后，在本地调试时也可以看到评论了。</p>
+<p>改动点1：</p>
+<pre><code class="yml"># themes/_config.yml
+
+# Comment
+duoshuo:
+disqus:
+gitalk:
+  enable: true
+  owner: &#39;github repo owner&#39;
+  repo: &#39;github repo name&#39;
+  ClientID: &#39;your ClientID&#39;
+  ClientSecret: &#39;your ClientSecret&#39;
+  id: location.pathname
+</code></pre>
+<p>改动点2：</p>
+<pre><code class="jade">// comments.jade
+
+if theme.gitalk.enable
+  #gitalk-container
+  script(src= url_for(&#39;js/gitalk.min.js&#39;))
+  script.
+    (function(){
+      var gitalk = new Gitalk({
+        clientID: &#39;#{theme.gitalk.ClientID}&#39;,
+        clientSecret: &#39;#{theme.gitalk.ClientSecret}&#39;,
+        repo: &#39;#{theme.gitalk.repo}&#39;,
+        owner: &#39;#{theme.gitalk.owner}&#39;,
+        id: #{theme.gitalk.id}
+      });
+      gitalk.render(&#39;gitalk-container&#39;)
+    })();
+</code></pre>
+<p>改动点3：</p>
+<p>登录 github 进入博客项目，点击 issue 筛选 label，把带有域名的 label 编辑，删掉域名，保存，即可。</p>
 </div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=guyunxiang.me/2017/10/28/为hexo添加评论功能/,尘飞扬,为hexo添加评论功能" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/10/26/为hexo添加自定义站内搜索功能/" title="为hexo添加自定义站内搜索功能" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
   var gitalk = new Gitalk({
     clientID: '8e90905eef1e8a7bfeb1',
