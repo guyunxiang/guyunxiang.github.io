@@ -209,6 +209,8 @@ function renderResultList(dataList) {
 
 2.渲染结果列表展示匹配到的内容，就像百度一样，搜索的结果又标题跟内容，在内容中高亮匹配到的内容，清晰了然，目前还仅仅只是展示了匹配到的文章标题。
 
+---
+
 **更新于2017年11月06日**
 
 1.搜索分词的优化，通过调整部分 `hexo-generator-json-content` 源码，在文章中添加 keywords 关键字，使之在生成 content.json 时包含我指定的 keywords，来手动分词可能被搜索的内容，达到搜索的准确性提高。
