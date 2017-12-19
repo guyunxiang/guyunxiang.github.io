@@ -28,8 +28,5 @@ files.forEach(function(filename) {
 });
 
 exec('cp -r public/. .', function(err, stdout, stderr) {
-  if (err) {
-    console.error(err);
-    return;
-  }
+  if (err) { console.error(err); return; }
 });
