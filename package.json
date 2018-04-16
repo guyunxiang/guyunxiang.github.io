@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "hexo": {
-    "version": "3.3.9"
+    "version": "3.7.1"
   },
   "scripts": {
     "deploy": "rm -rf public && hexo g && git add -A && git commit -m 'hexo generate' && git push origin source && git checkout master && node bin/index.js && git add -A && git commit -m 'deploy master' && git push origin master && git checkout source"

@@ -31,10 +31,10 @@
       else
         a(href="/links")= __('Links')		
   .information
-    - if (['index.html', 'search'].indexOf(path.split('/index.html')[0]) > -1)
-      .search.search-pc
-        input(type="text" placeholder="标题或内容" maxlength="100")
-        i.fa.fa-search
+    //- - if (['index.html', 'search'].indexOf(path.split('/index.html')[0]) > -1)
+    .search.search-pc
+      input(type="text" placeholder="标题或内容" maxlength="100")
+      i.fa.fa-search
     .back_btn
       li
         if is_post()
