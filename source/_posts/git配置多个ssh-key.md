@@ -61,7 +61,7 @@ Host gitlab.com
 # github
 Host github.com
   HostName                  github.com
-  Users                     xxxxx@xx.xxx
+  User                      xxxxx@xx.xxx
   PreferredAuthentications  publickey
   IdentityFile              /Users/xxx/.ssh/github_rsa
 ```
@@ -76,7 +76,6 @@ Host github.com
 
 ```bash
 $ ssh -T git@gitlab.com
-$ ssh -T git@github.com
 ```
 
 完成
