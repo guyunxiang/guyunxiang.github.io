@@ -22,4 +22,28 @@ MAME 在 mac 上有多种版本，这里推荐 [MAME OS X](http://mameosx.source
 
 ### 运行准备
 
-MAME OS X 安装好之后，界面中已经有了所有的游戏列表，但是此时还是不能玩，因为没有 ROM，需要手动安装 BOIS 及 ROM 后才能运行游戏
+MAME OS X 安装好之后，界面中已经有了所有的游戏列表，但是此时还是不能玩，因为没有 ROM，需要手动安装 BOIS 及 ROM 后才能运行游戏。
+
+1.  配置 ROMs 目录
+
+    在配置页面设置 General -> ROM Directory 配置， 指定用于存放游戏 ROM 以及 BOIS 文件：
+
+    ![roms_dir](/images/mame/roms_dir.png)
+
+2.  配置图像设置
+
+    在设置页面 Video 标签下设置 Rendering Options: OpenGL + MAME 渲染。
+
+    ![video_setting](/images/mame/video_setting.png)
+
+3.  下载 BOIS 文件
+
+    去 [http://www.planetemu.net/roms/mame-bios-pack](http://www.planetemu.net/roms/mame-bios-pack) 下载 BOIS 文件，下载下来是一个压缩包，解压后有 n 多个小的压缩包，这些小的压缩包就是 BOIS 内核，不要在继续逐个解压了，把这些 BOIS 压缩包拷贝到上一步设定的 ROMs 文件夹内即可。
+
+4.  下载游戏
+
+    在 [http://www.planetemu.net/roms/mame-roms](http://www.planetemu.net/roms/mame-roms) 找到你想下载的游戏，下载游戏压缩包，拷贝至 ROMs 目录下，进入 MAME OS X 列表，选中你刚才下载的游戏，点击菜单栏 File -> Audit Selected Games 来检查你下载的游戏，检查完毕后，双击运行即可。
+
+完成，可以愉快的体验而是游戏厅的游戏了。
+
+![Metal_Slug](/images/mame/Metal_Slug.png)
