@@ -44,6 +44,10 @@ MAME OS X 安装好之后，界面中已经有了所有的游戏列表，但是�
 
     在 [http://www.planetemu.net/roms/mame-roms](http://www.planetemu.net/roms/mame-roms) 找到你想下载的游戏，下载游戏压缩包，拷贝至 ROMs 目录下，进入 MAME OS X 列表，选中你刚才下载的游戏，点击菜单栏 File -> Audit Selected Games 来检查你下载的游戏，检查完毕后，双击运行即可。
 
+5.  设置按键
+
+    MAME 在程序的设置菜单中是无法设置游戏按键的，得进入游戏后，按 TAB 键开启设置菜单，然后在设置游戏按键。
+
 完成，可以愉快的体验而是游戏厅的游戏了。
 
 ![Metal_Slug](/images/mame/Metal_Slug.png)
