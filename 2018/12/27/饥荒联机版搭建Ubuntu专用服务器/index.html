@@ -67,7 +67,21 @@ $ quit
 <pre><code class="bash">$ scp -r ~/Documents/⁨Klei⁩/⁨DoNotStarveTogether⁩/Cluster_1 root@你的服务器:.⁨Klei⁩/⁨DoNotStarveTogether⁩/
 </code></pre>
 <p>把本地创建的饥荒世界文件拷贝到服务器对应目录下。</p>
-<h4 id="三、运行服务器"><a href="#三、运行服务器" class="headerlink" title="三、运行服务器"></a>三、运行服务器</h4><p>利用 screen 命令启动一个新窗口，以便后台运行：</p>
+<h4 id="三、打服务器-Mod"><a href="#三、打服务器-Mod" class="headerlink" title="三、打服务器 Mod"></a>三、打服务器 Mod</h4><p>修复饥荒服务端 Mod 配置文件：</p>
+<pre><code class="bash">$ vim ~/dst/mods/dedicated_server_mods_setup.lua
+</code></pre>
+<p>在最后一行添加你想要打的补丁代码，数字是 Mod 的 ID：</p>
+<pre><code class="bash"># /dst/mods/dedicated_server_mods_setup.lus
+...
+ServerModSetup(&quot;378160973&quot;)
+
+</code></pre>
+<p>起服务时饥荒便会自动把这些 Mod 下载下来，改完如下：</p>
+<p><img src="/images/steam/dst_server_mod.png" alt="dst_server_mod"></p>
+<blockquote>
+<p>关于每一个 mod 如何配置：<br>在客户端部分创建世界的时候，你可以配置你的服务端 Mod，启用并修改它们的选项，然后在 Master/Caves 文件下有一个 <code>modoverrides.lua</code> 文件，便是你 mod 的配置文件，把这两个文件替换掉服务端对应文件即可。</p>
+</blockquote>
+<h4 id="四、运行服务器"><a href="#四、运行服务器" class="headerlink" title="四、运行服务器"></a>四、运行服务器</h4><p>利用 screen 命令启动一个新窗口，以便后台运行：</p>
 <pre><code class="bash">$ screen -s DST
 </code></pre>
 <blockquote>
@@ -77,6 +91,9 @@ $ quit
 <pre><code class="bash">$ cd /dst/bin/
 $ ./dontstarvetogether_dedicated_server
 </code></pre>
+<blockquote>
+<p>退出当前窗口，运行 <code>ctrl + A + D</code><br>查看 screen 列表，运行的进程 <code>screen -ls</code><br>停止 screen 进程 <code>screen -X -S 进程id quit</code>，进程 ID 可以在查看进程列表中看到</p>
+</blockquote>
 <p>至此，搭建饥荒联机版专用服务器就完成了。进入饥荒，浏览世界，搜索你刚才建立的世界，应该就能找到了。</p>
 <p><img src="/images/steam/dst_world_server.jpeg" alt="dst_world_server"></p>
 </div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=guyunxiang.me/2018/12/27/饥荒联机版搭建Ubuntu专用服务器/,尘飞扬,饥荒联机版搭建 Ubuntu 专用服务器" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2018/11/29/MAME街机模拟器/" title="在macOS上安装街机模拟器" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
