@@ -142,8 +142,11 @@ ServerModSetup("378160973")
 
 ![dst_server_mod](/images/steam/dst_server_mod.png)
 
+> Mod 在哪找?看下图：
+> ![dst_mod_id](/images/steam/dst_mod_id.png)
 > 关于每一个 mod 如何配置：
 > 在客户端部分创建世界的时候，你可以配置你的服务端 Mod，启用并修改它们的选项，然后在 Master/Caves 文件下有一个 `modoverrides.lua` 文件，便是你 mod 的配置文件，把这两个文件替换掉服务端对应文件即可。
+
 
 #### 四、运行服务器
 
@@ -169,3 +172,25 @@ $ ./dontstarvetogether_dedicated_server
 至此，搭建饥荒联机版专用服务器就完成了。进入饥荒，浏览世界，搜索你刚才建立的世界，应该就能找到了。
 
 ![dst_world_server](/images/steam/dst_world_server.jpeg)
+
+- - -
+
+无 Mod 不饥荒，推荐几个 Mod:
+
+#### 服务端 Mod
+
+![Global Positions](https://steamuserimages-a.akamaihd.net/ugc/535134943326895647/0FF32BFCBDF3CDAFD88373F2D76C9DDE50D8C090/?imw=268&imh=268&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true)
+
+[Global Positions](https://steamcommunity.com/sharedfiles/filedetails/?id=378160973)：全球定位系统，可以在地图看到别的小伙伴，非常实用！推荐！ID：378160973
+
+![Health Info](https://steamuserimages-a.akamaihd.net/ugc/27366287301149683/3B7BE389207B0A020F6935F85477409D50E0FFF0/?imw=268&imh=268&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true)
+
+[Health Info](https://steamcommunity.com/sharedfiles/filedetails/?id=375859599)：显示怪物的生命值，知己知彼方可百战不殆。ID：375859599
+
+#### 客户端 Mod
+
+![Combined Status](https://steamuserimages-a.akamaihd.net/ugc/539643766794230713/9486F35BE935DC54F2A7D1216F725E0444A46C33/?imw=268&imh=268&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true)
+
+[Combined Status](https://steamcommunity.com/sharedfiles/filedetails/?id=376333686)：显示状态信息，非常实用！客户端 Mod 首推！ID：376333686
+
+饥荒的 Mod 非常多，这里只列了几个我觉得非常实用的 Mod，还有很多非常有意思的 Mod，就不一一列举了。依据个人喜好安装。
