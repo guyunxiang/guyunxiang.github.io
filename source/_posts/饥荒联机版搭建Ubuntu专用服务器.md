@@ -122,7 +122,30 @@ $ scp -r ~/Documents/⁨Klei⁩/⁨DoNotStarveTogether⁩/Cluster_1 root@你的�
 
 把本地创建的饥荒世界文件拷贝到服务器对应目录下。
 
-#### 三、运行服务器
+#### 三、打服务器 Mod
+
+修复饥荒服务端 Mod 配置文件：
+
+```bash
+$ vim ~/dst/mods/dedicated_server_mods_setup.lua
+```
+在最后一行添加你想要打的补丁代码，数字是 Mod 的 ID：
+
+```bash
+# /dst/mods/dedicated_server_mods_setup.lus
+...
+ServerModSetup("378160973")
+
+```
+
+起服务时饥荒便会自动把这些 Mod 下载下来，改完如下：
+
+![dst_server_mod](/images/steam/dst_server_mod.png)
+
+> 关于每一个 mod 如何配置：
+> 在客户端部分创建世界的时候，你可以配置你的服务端 Mod，启用并修改它们的选项，然后在 Master/Caves 文件下有一个 `modoverrides.lua` 文件，便是你 mod 的配置文件，把这两个文件替换掉服务端对应文件即可。
+
+#### 四、运行服务器
 
 利用 screen 命令启动一个新窗口，以便后台运行：
 
@@ -138,6 +161,10 @@ $ screen -s DST
 $ cd /dst/bin/
 $ ./dontstarvetogether_dedicated_server
 ```
+
+> 退出当前窗口，运行 `ctrl + A + D`
+> 查看 screen 列表，运行的进程 `screen -ls`
+> 停止 screen 进程 `screen -X -S 进程id quit`，进程 ID 可以在查看进程列表中看到
 
 至此，搭建饥荒联机版专用服务器就完成了。进入饥荒，浏览世界，搜索你刚才建立的世界，应该就能找到了。
 
