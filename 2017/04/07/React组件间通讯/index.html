@@ -113,8 +113,8 @@ class Parent extends React.Component {
 }
 </code></pre>
 <p>以上例子，Child1的inputonChange事件会将message传递给Parent组件，Parent收到message后，更新state，再传递给Child2，实现兄弟组件之间的通讯。</p>
-<h3 id="其他方式实现组件间通讯"><a href="#其他方式实现组件间通讯" class="headerlink" title="其他方式实现组件间通讯"></a>其他方式实现组件间通讯</h3><h4 id="Flux-和-Redux"><a href="#Flux-和-Redux" class="headerlink" title="Flux 和 Redux"></a>Flux 和 Redux</h4><p><a href="https://github.com/facebook/flux" target="_blank" rel="external">Flux</a> 是 Facebook 推出的一种应用架构方案，用以组织代码，安排内部逻辑，是项目更便于开发和维护。</p>
-<p><a href="http://redux.js.org/" target="_blank" rel="external">Redux</a> 是 JavaScript 状态容器，提供可预测化得状态管理。可以让你构建一致化的应用，运行于不同的环境，并且易于测试。</p>
+<h3 id="其他方式实现组件间通讯"><a href="#其他方式实现组件间通讯" class="headerlink" title="其他方式实现组件间通讯"></a>其他方式实现组件间通讯</h3><h4 id="Flux-和-Redux"><a href="#Flux-和-Redux" class="headerlink" title="Flux 和 Redux"></a>Flux 和 Redux</h4><p><a href="https://github.com/facebook/flux" target="_blank" rel="noopener">Flux</a> 是 Facebook 推出的一种应用架构方案，用以组织代码，安排内部逻辑，是项目更便于开发和维护。</p>
+<p><a href="http://redux.js.org/" target="_blank" rel="noopener">Redux</a> 是 JavaScript 状态容器，提供可预测化得状态管理。可以让你构建一致化的应用，运行于不同的环境，并且易于测试。</p>
 <h4 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h4><p>观察者模式也叫做<strong><em>发布者-订阅者模式</em></strong>，发布者发布事件，订阅者监听事件并作出反应。</p>
 <blockquote>
 <p>Redux 内部的实现，其实也是基于观察者模式的，reducer 的调用结果，存储在 store 内部的 state 中，并在每一次 reducer 的调用中并作为参数传入。</p>

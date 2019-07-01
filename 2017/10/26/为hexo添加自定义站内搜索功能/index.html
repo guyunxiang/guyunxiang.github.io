@@ -10,8 +10,8 @@
 <p>缺点：样式可能与博客的主题不契合，颜值上差点，且有申请条件限制。</p>
 <p>我这里主要介绍添加自定义的站内搜索，所以就不介绍站内搜索工具了，具体如何接入，可以上网搜索下相关文章。</p>
 <h3 id="2-自定义的站内搜索工具"><a href="#2-自定义的站内搜索工具" class="headerlink" title="2. 自定义的站内搜索工具"></a>2. 自定义的站内搜索工具</h3><p>Hexo 官网的插件库中有提供两个插件可以用来为我们的自定义搜索提供帮助，分别是：</p>
-<p><a href="https://github.com/alexbruno/hexo-generator-json-content" target="_blank" rel="external">hexo-generator-json-content</a></p>
-<p><a href="https://github.com/PaicHyperionDev/hexo-generator-search" target="_blank" rel="external">hexo-generator-search</a></p>
+<p><a href="https://github.com/alexbruno/hexo-generator-json-content" target="_blank" rel="noopener">hexo-generator-json-content</a></p>
+<p><a href="https://github.com/PaicHyperionDev/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a></p>
 <p>这两个插件分别可以在使用 Hexo generate 打包的时候，在 public 目录下生成 content.json 或 search.json 文件，这两个文件会包含项目中所有的博客页面信息，用以在自定义搜索时匹配想要搜索的文章。</p>
 <p>优点：自己动手，丰衣足食，可以根据自己的需求来做，样式也是自己设计，与博客最契合。</p>
 <p>缺点：需要自己写搜索匹配和渲染列表的代码，因为是纯前端实现，没有服务端的处理，对语义的分词处理不行，无法做到精准搜索真正想搜的文章。</p>
@@ -45,7 +45,7 @@ jsonContent:
     tags:           false   # 同上
 </code></pre>
 <blockquote>
-<p>具体配置项说明，见<a href="https://github.com/alexbruno/hexo-generator-json-content" target="_blank" rel="external">这里</a></p>
+<p>具体配置项说明，见<a href="https://github.com/alexbruno/hexo-generator-json-content" target="_blank" rel="noopener">这里</a></p>
 </blockquote>
 <p>以上，便完成了最基本的配置，在博客目录下运行 <code>hexo generate</code> 便会生成所有文章数据的 content.json 文件。</p>
 <p>看下根据以上配置，生成 content.json 其中一篇文章的内容：</p>

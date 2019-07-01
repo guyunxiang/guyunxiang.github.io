@@ -37,7 +37,7 @@ $ npm run dev
   }
 }
 </code></pre>
-<p>这里使用 Babel 的配置文件<br>presets 配置：<br>env 的环境配置，禁止了使用 ES6 模块转换到其他的模块类型（详细<a href="https://babeljs.io/docs/plugins/preset-env/" target="_blank" rel="external">文档</a>），同时，指定了浏览器兼容规则（<a href="http://browserl.ist/" target="_blank" rel="external">详情</a>）<br>stage-x 预设的转换都是尚未被批准为发布 Javascript 的语言（如ES6 / ES2015）的更改。这里的 stage-2 指定了第二草案规定内容版本的转换器（<a href="https://babeljs.io/docs/plugins/#transform-plugins-other" target="_blank" rel="external">详情</a>）<br>plugins 配置：<br>使用 <a href="http://babeljs.io/docs/plugins/transform-runtime/" target="_blank" rel="external">transform-runtime</a> 插件，为代码构建一个沙盒模式，避免污染全局变量<br>env 配置：<br>test 的环境下使用 env ，stage-2 的转换器，引用 istanbul 插件（代码覆盖率工具，配合 Mocha 使用）</p>
+<p>这里使用 Babel 的配置文件<br>presets 配置：<br>env 的环境配置，禁止了使用 ES6 模块转换到其他的模块类型（详细<a href="https://babeljs.io/docs/plugins/preset-env/" target="_blank" rel="noopener">文档</a>），同时，指定了浏览器兼容规则（<a href="http://browserl.ist/" target="_blank" rel="noopener">详情</a>）<br>stage-x 预设的转换都是尚未被批准为发布 Javascript 的语言（如ES6 / ES2015）的更改。这里的 stage-2 指定了第二草案规定内容版本的转换器（<a href="https://babeljs.io/docs/plugins/#transform-plugins-other" target="_blank" rel="noopener">详情</a>）<br>plugins 配置：<br>使用 <a href="http://babeljs.io/docs/plugins/transform-runtime/" target="_blank" rel="noopener">transform-runtime</a> 插件，为代码构建一个沙盒模式，避免污染全局变量<br>env 配置：<br>test 的环境下使用 env ，stage-2 的转换器，引用 istanbul 插件（代码覆盖率工具，配合 Mocha 使用）</p>
 <p><strong>.editorconfig</strong></p>
 <pre><code class="config">root = true
 
@@ -49,7 +49,7 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 </code></pre>
-<p>这里定义了文件编码 utf-8，用空格替换制表符，缩进2个空格，以lf换行符结尾，结尾增加一个空行，删除换行符前的所有空白字符<br>editorconfig 是规范不同编辑器之间缩进的插件配置，支持多种编辑器，好的编程习惯，从它开始，详情看<a href="http://editorconfig.org/" target="_blank" rel="external">官网</a></p>
+<p>这里定义了文件编码 utf-8，用空格替换制表符，缩进2个空格，以lf换行符结尾，结尾增加一个空行，删除换行符前的所有空白字符<br>editorconfig 是规范不同编辑器之间缩进的插件配置，支持多种编辑器，好的编程习惯，从它开始，详情看<a href="http://editorconfig.org/" target="_blank" rel="noopener">官网</a></p>
 <p><strong>.eslintignore</strong></p>
 <pre><code class="config">build/*.js
 config/*.js
@@ -95,6 +95,7 @@ module.exports = {
     &#39;no-debugger&#39;: process.env.NODE_ENV === &#39;production&#39; ? 2 : 0
   }
 }
+
 </code></pre>
 <p>这里配置了项目使用的 eslint 规则，在 init 项目时，会让你选择使用哪种 eslint 规则，有 Google 的一般规则，也有 airbnb 较为严格的校验规则，也可以选择自定义的规则，这里示例的是 airbnb 的校验规则。你可以根据自己的习惯在 rules 中配置自定义的规则。</p>
 <p><strong>.gitignore</strong></p>
@@ -124,7 +125,7 @@ module.exports = {
     &quot;autoprefixer&quot;: {}
   }
 }
-</code></pre><p>这是 <a href="http://postcss.org/" target="_blank" rel="external">PostCSS</a> 配置文件，用 JavaScript 转换 CSS 的工具。autoprefixer 是为 CSS 自动添加前缀功能。</p>
+</code></pre><p>这是 <a href="http://postcss.org/" target="_blank" rel="noopener">PostCSS</a> 配置文件，用 JavaScript 转换 CSS 的工具。autoprefixer 是为 CSS 自动添加前缀功能。</p>
 <p>以上，是对 vue init 的骨架项目根目录下的配置文件介绍。</p>
 <p>还有关于 webpack ，source 源码，vue-router 以及 NightWatch &amp; Karma + Mocha 测试框架，见后续<a href="/2017/08/09/vue-init项目分析2/">文章</a>。</p>
 </div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=guyunxiang.me/2017/08/07/vue-init项目分析/,尘飞扬,vue-init 项目分析：前篇" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/08/08/Mac使用常见问题手记/" title="Mac使用常见问题手记" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/07/25/Mac配置终端git自动补全/" title="Mac配置终端git自动补全" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
