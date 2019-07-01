@@ -3,5 +3,6 @@ User-agent: *
 Allow: /
 Disallow: /resource/
 
-Sitemap: http://guyunxiang.me/sitemap.xml
-Sitemap: http://guyunxiang.me/baidusitemap.xml
+Sitemap: http://guyunxiang.cc/sitemap.xml
+Sitemap: http://guyunxiang.cc/baidusitemap.xml
+
