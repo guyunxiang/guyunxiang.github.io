@@ -5,6 +5,7 @@ categories: 技术探讨
 tags:
 - bash
 - git
+typora-root-url: ../
 ---
 
 ### 什么是 Alias?

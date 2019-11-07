@@ -5,6 +5,7 @@ categories: 游戏攻略
 tags:
 - 步步高游戏
 - 伏魔记
+typora-root-url: ../
 ---
 
 ![伏魔记](/images/fumoji/fumoji.jpg)

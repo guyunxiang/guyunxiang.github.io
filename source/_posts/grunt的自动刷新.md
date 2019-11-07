@@ -4,6 +4,7 @@ date: 2014-11-19 17:19:33
 categories: 前端技术
 tags:
 - grunt
+typora-root-url: ../
 ---
 grunt很强大，可以帮我我们解决很多繁琐的操作，虽然刚接触不久，但依然感受到其强大之处，这篇记录一下通过grunt.js实现事实刷新页面，
 

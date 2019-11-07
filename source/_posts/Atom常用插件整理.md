@@ -5,6 +5,7 @@ categories: 技术探讨
 tags:
 - 开发工具
 - atom
+typora-root-url: ../
 ---
 
 [Atom](https://atom.io/) 是 github 专门为程序员推出的一个跨平台文本编辑器。具有简洁直观的图形用户界面，并有很多有趣的特点：支持 CSS，HTML，Javascript等网页编程语言。它支持宏，自动完成分屏功能，集成文件管理器。

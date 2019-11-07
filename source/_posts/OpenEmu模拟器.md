@@ -5,6 +5,7 @@ categories: 游戏攻略
 tags:
 - 红白机游戏
 - macos
+typora-root-url: ../
 ---
 最近 MacBook Pro 换了，无聊时又开始捣鼓小游戏，曾经在 Mac 上装了一个 [Nestopia](/2017/05/28/红白机游戏，儿时的回忆/)（红白机模拟器），这次发现了一新的 Mac 下的游戏模拟器，非常好用，在此分享。
 

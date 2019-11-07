@@ -5,6 +5,7 @@ categories: 技术探讨
 tags:
 - hexo
 keywords: [hexo, hexo-generator-search, hexo-generator-json-content, 自定义搜索, 站内搜索, 搜索功能]
+typora-root-url: ../
 ---
 > Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
 
