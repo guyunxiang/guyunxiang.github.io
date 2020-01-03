@@ -85,7 +85,7 @@ OK，到这里，客户端这边做的事情已经准备完了，接下来就是
 $ sudo apt-get install libstdc++6:i386 libgcc1:i386 libcurl4-gnutls-dev:i386 lib32gcc1
 ```
 
-> 备注： 如果安装运行失败，报找不到某个包，先运行 `sudo apt-get update` 命令，然后再安装。
+> 备注： 如果是 Ubuntu 64 位系统安装 i386 的包可能会有异常，报找不到某个包，先运行 `sudo dpkg --add-architecture i386 && sudo apt-get update` 命令，然后再安装。
 
 创建 steamcmd 目录，安装 steamcmd 工具：
 
