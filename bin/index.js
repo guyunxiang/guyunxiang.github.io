@@ -14,6 +14,8 @@ var whitelist = [
   '.gitignore',
   '.travis.yml',
   'README.md',
+  'CNAME',
+  'robots.txt',
   'bin',
   'node_modules',
   'public'
