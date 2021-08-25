@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>饥荒联机版搭建 Ubuntu 专用服务器 · 尘飞扬</title><meta name="renderer" content="webkit"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="顾云翔"><meta name="keywords" content="Hexo,HTML,CSS,JavaScript,FrontEnd,顾云翔,前端开发,个人博客"><meta name="description" content="前言：最近小伙伴趁着 steam 活动入手了饥荒联机版，于是商量着大家一起没事玩玩饥荒，建建家园，所以考虑建一个属于我们自己的专用服务器。
+
+准备工作
+一个正版饥荒联机版（建服务器要验证 token，防盗版）
+一台云服务器（阿里云、腾讯云啥的都OK）
+
+
+备注：服务器我选择的是 Ubuntu 版本，"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="LBNq4uFHpAudYV9fvkrbaV00z9y6s4BxIFbPhLFDKdI" name="google-site-verification"><meta content="b14c29f71f435bff7849690cb5254199" name="360-site-verification"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/highlight.css"><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="followme"><a href="http://github.com/guyunxiang" target="_block">follow me</a></div><div class="logo-title"><div class="title"><img src="/images/logo@2x.png"><h3 title=""><a href="/">尘飞扬</a></h3><div class="description"><p>细若微尘，亦可飞扬</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/guyunxiang" target="_block"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/guyunxiang" target="_block"><i class="fa fa-github"></i></a></li><li><a href="http://weibo.com/guyunxing32" target="_block"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><span>© <a href="/">2017 - 2018 </a>尘飞扬</span><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">published with Hexo !</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="search search-pc"><input type="text" placeholder="标题或内容" maxlength="100"><i class="fa fa-search"></i></div><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="https://avatars2.githubusercontent.com/u/7507079?v=3&amp;s=460"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>饥荒联机版搭建 Ubuntu 专用服务器</a></h3></div><div class="post-information"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-12-27</span><i class="fa fa-tag"></i><a href="/categories/游戏攻略/" title="游戏攻略" class="tag">游戏攻略 </a><a href="/tags/steam/" title="steam" class="tag">steam </a><a href="/tags/饥荒联机版/" title="饥荒联机版" class="tag">饥荒联机版 </a></div></div></div><div class="post-content"><blockquote>
+<p>前言：最近小伙伴趁着 steam 活动入手了饥荒联机版，于是商量着大家一起没事玩玩饥荒，建建家园，所以考虑建一个属于我们自己的专用服务器。</p>
+</blockquote>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li>一个正版饥荒联机版（建服务器要验证 token，防盗版）</li>
+<li>一台云服务器（阿里云、腾讯云啥的都OK）</li>
+</ul>
+<blockquote>
+<p>备注：<br>服务器我选择的是 Ubuntu 版本，Linux 系统服务器好处不用多说了，配置用的是 1核 2G内存，镜像是 Ubuntu 16.04，饥荒服务端还是有点吃内存的，建议 2G 内存，性能足够了。CPU 我跑了半天，平均也就 20% 左右，不过在人多的时候，以及有 n 多蜜蜂或下青蛙雨的时候不确定 1核 够不够。<br>阿里云还是腾讯云或者其他云，那个便宜用哪个。</p>
+</blockquote>
+<h3 id="客户端工作"><a href="#客户端工作" class="headerlink" title="客户端工作"></a>客户端工作</h3><h4 id="一、创建服务端世界"><a href="#一、创建服务端世界" class="headerlink" title="一、创建服务端世界"></a>一、创建服务端世界</h4><p>专用服务器就是跑在服务端的一个饥荒世界，所以需要先创建一个世界，这个在本机就能直接创建</p>
+<p><img src="/images/steam/create_dst_world.png" alt="create_dst_world"></p>
+<p>在这里设置世界的名称以及描述，选择公共，设置密码等，以及对这个世界的其他定制等等，设置完成后，点击创建，不用进入游戏，退出即可。</p>
+<blockquote>
+<p>名称：创建完成之后，在饥荒联机版用来搜索该服务器的名称<br>描述：添加备注，方便大家确认是否是属于我们的世界。<br>密码：方便仅属于我们几个小伙伴才能进入</p>
+</blockquote>
+<p>至此，这个即将运行在服务器上的世界创建完成了。</p>
+<h4 id="二、获取饥荒世界创建文件"><a href="#二、获取饥荒世界创建文件" class="headerlink" title="二、获取饥荒世界创建文件"></a>二、获取饥荒世界创建文件</h4><p>MacOS目录位置：‎⁨Macintosh HD⁩ ▸ ⁨用户⁩ ▸ you_name ▸ ⁨文稿⁩ ▸ ⁨Klei⁩ ▸ DoNotStarveTogether<br>Windows目录位置：C:\Users\你的用户名\Documents\Klei\DoNotStarveTogether</p>
+<p><img src="/images/steam/dst_world_dir.png" alt="dst_world_dir"></p>
+<p>Cluster_1 就是刚才建立的世界，_1 表示是本地创建的第一个世界。</p>
+<h4 id="三、获取个人-ID-以及授权-token"><a href="#三、获取个人-ID-以及授权-token" class="headerlink" title="三、获取个人 ID 以及授权 token"></a>三、获取个人 ID 以及授权 token</h4><p>打开饥荒，在左下角菜单下方找到账户信息，点击会打开账户信息页面。</p>
+<p><img src="/images/steam/dst_account.png" alt="dst_account"></p>
+<p>打开账户信息页，KLEI 用户 ID 就是你的 ID 了，保存你的 ID 到 <code>adminlist.txt</code> 文件中，保存到 <code>Cluster_1</code> 目录下。</p>
+<p><img src="/images/steam/dst_account_id.png" alt="dst_account_id"></p>
+<p>然后点击导航栏，游戏</p>
+<p><img src="/images/steam/dst_account_games.png" alt="dst_account_games"></p>
+<p>找到 Don’t Starve Together ，点击服务器按钮，进入到服务器页面，获取你的服务器授权 Token。</p>
+<p><img src="/images/steam/dst_account_token.png" alt="dst_account_token"></p>
+<p>保存你的 token 到 <code>cluster_token.txt</code> 文件中，保存到 <code>Cluster_1</code> 目录下。</p>
+<p>至此，你的 Cluster_1 目录下应该包含如下内容：</p>
+<p><img src="/images/steam/dst_world_dir2.png" alt="dst_world_dir2"></p>
+<blockquote>
+<p>说明：<br>Master 对应地上世界设置<br>Caves 对应地下世界设置</p>
+</blockquote>
+<p>OK，到这里，客户端这边做的事情已经准备完了，接下来就是配置服务端了。</p>
+<hr>
+<h3 id="服务端工作"><a href="#服务端工作" class="headerlink" title="服务端工作"></a>服务端工作</h3><h4 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h4><p>登陆上服务器只有，运行安装依赖：</p>
+<pre><code class="bash">$ sudo apt-get install libstdc++6:i386 libgcc1:i386 libcurl4-gnutls-dev:i386 lib32gcc1
+</code></pre>
+<blockquote>
+<p>备注： 如果是 Ubuntu 64 位系统安装 i386 的包可能会有异常，报找不到某个包，先运行 <code>sudo dpkg --add-architecture i386 &amp;&amp; sudo apt-get update</code> 命令，然后再安装。</p>
+</blockquote>
+<p>创建 steamcmd 目录，安装 steamcmd 工具：</p>
+<pre><code class="bash">$ mkdir ~/steamcmd
+$ cd ~/steamcmd
+$ wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+$ tar -xvzf steamcmd_linux.tar.gz
+</code></pre>
+<p>进入 steamcmd 命令行模式，安装饥荒服务端：</p>
+<pre><code class="bash">$ ./steamcmd.sh
+</code></pre>
+<p>使用匿名账户登录，并安装饥荒到 /dst 目录下，完成后退出：</p>
+<pre><code class="bash">$ login anonymous
+$ force_install_dir ../dst
+$ app_update 343050 validate
+$ quit
+</code></pre>
+<h4 id="二、创建服务端饥荒"><a href="#二、创建服务端饥荒" class="headerlink" title="二、创建服务端饥荒"></a>二、创建服务端饥荒</h4><p>拷贝刚才在本地创建的饥荒世界文件到服务端 <code>./klei/DoNotStarveTogether</code> 目录下，拷贝方式有很多，例如 FTP 文件传输工具，或者使用 scp 命令。</p>
+<p>例如使用 scp 命令，本地运行：</p>
+<pre><code class="bash">$ scp -r ~/Documents/⁨Klei⁩/⁨DoNotStarveTogether⁩/Cluster_1 root@你的服务器:.⁨Klei⁩/⁨DoNotStarveTogether⁩/
+</code></pre>
+<p>把本地创建的饥荒世界文件拷贝到服务器对应目录下。</p>
+<h4 id="三、打服务器-Mod"><a href="#三、打服务器-Mod" class="headerlink" title="三、打服务器 Mod"></a>三、打服务器 Mod</h4><p>修复饥荒服务端 Mod 配置文件：</p>
+<pre><code class="bash">$ vim ~/dst/mods/dedicated_server_mods_setup.lua
+</code></pre>
+<p>在最后一行添加你想要打的补丁代码，数字是 Mod 的 ID：</p>
+<pre><code class="bash"># /dst/mods/dedicated_server_mods_setup.lus
+...
+ServerModSetup(&quot;378160973&quot;)
+
+</code></pre>
+<p>起服务时饥荒便会自动把这些 Mod 下载下来，改完如下：</p>
+<p><img src="/images/steam/dst_server_mod.png" alt="dst_server_mod"></p>
+<blockquote>
+<p>Mod 在哪找?看下图：<br><img src="/images/steam/dst_mod_id.png" alt="dst_mod_id"><br>关于每一个 mod 如何配置：<br>在客户端部分创建世界的时候，你可以配置你的服务端 Mod，启用并修改它们的选项，然后在 Master/Caves 文件下有一个 <code>modoverrides.lua</code> 文件，便是你 mod 的配置文件，把这两个文件替换掉服务端对应文件即可。</p>
+</blockquote>
+<h4 id="四、运行服务器"><a href="#四、运行服务器" class="headerlink" title="四、运行服务器"></a>四、运行服务器</h4><p>利用 screen 命令启动一个新窗口，以便后台运行：</p>
+<pre><code class="bash">$ screen -s DST
+</code></pre>
+<blockquote>
+<p>提示：如果没有 screen 命令，需要先安装，sudo apt-get install screen</p>
+</blockquote>
+<p>启动饥荒服务端程序：</p>
+<pre><code class="bash">$ cd /dst/bin/
+$ ./dontstarvetogether_dedicated_server
+</code></pre>
+<blockquote>
+<p>退出当前窗口，运行 <code>ctrl + A + D</code><br>查看 screen 列表，运行的进程 <code>screen -ls</code><br>停止 screen 进程 <code>screen -X -S 进程id quit</code>，进程 ID 可以在查看进程列表中看到</p>
+</blockquote>
+<p>至此，搭建饥荒联机版专用服务器就完成了。进入饥荒，浏览世界，搜索你刚才建立的世界，应该就能找到了。</p>
+<p><img src="/images/steam/dst_world_server.jpeg" alt="dst_world_server"></p>
+<hr>
+<p>无 Mod 不饥荒，推荐几个 Mod:</p>
+<h4 id="服务端-Mod"><a href="#服务端-Mod" class="headerlink" title="服务端 Mod"></a>服务端 Mod</h4><p><img src="https://steamuserimages-a.akamaihd.net/ugc/535134943326895647/0FF32BFCBDF3CDAFD88373F2D76C9DDE50D8C090/?imw=268&amp;imh=268&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true" alt="Global Positions"></p>
+<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=378160973" target="_blank" rel="noopener">Global Positions</a>：全球定位系统，可以在地图看到别的小伙伴，非常实用！推荐！ID：378160973</p>
+<p><img src="https://steamuserimages-a.akamaihd.net/ugc/27366287301149683/3B7BE389207B0A020F6935F85477409D50E0FFF0/?imw=268&amp;imh=268&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true" alt="Health Info"></p>
+<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=375859599" target="_blank" rel="noopener">Health Info</a>：显示怪物的生命值，知己知彼方可百战不殆。ID：375859599</p>
+<h4 id="客户端-Mod"><a href="#客户端-Mod" class="headerlink" title="客户端 Mod"></a>客户端 Mod</h4><p><img src="https://steamuserimages-a.akamaihd.net/ugc/539643766794230713/9486F35BE935DC54F2A7D1216F725E0444A46C33/?imw=268&amp;imh=268&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true" alt="Combined Status"></p>
+<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=376333686" target="_blank" rel="noopener">Combined Status</a>：显示状态信息，非常实用！客户端 Mod 首推！ID：376333686</p>
+<p>饥荒的 Mod 非常多，这里只列了几个我觉得非常实用的 Mod，还有很多非常有意思的 Mod，就不一一列举了。依据个人喜好安装。</p>
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=https://guyunxiang.cc/2018/12/27/饥荒联机版搭建Ubuntu专用服务器/,尘飞扬,饥荒联机版搭建 Ubuntu 专用服务器" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2019/07/01/%E4%BB%99%E5%89%91%E5%A5%87%E4%BE%A0%E4%BC%A0%E5%9B%9B-%E5%A7%94%E6%89%98%E4%BB%BB%E5%8A%A1/" title="仙剑奇侠传四-委托任务" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2018/11/29/MAME%E8%A1%97%E6%9C%BA%E6%A8%A1%E6%8B%9F%E5%99%A8/" title="在macOS上安装街机模拟器" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
+  var gitalk = new Gitalk({
+    clientID: '8e90905eef1e8a7bfeb1',
+    clientSecret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+    repo: 'guyunxiang.github.io',
+    owner: 'guyunxiang',
+    admin: ['guyunxiang'],
+    id: location.pathname
+  });
+  gitalk.render('gitalk-container')
+})();</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  } else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script></body></html>

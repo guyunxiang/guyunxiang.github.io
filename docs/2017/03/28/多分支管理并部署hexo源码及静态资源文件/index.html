@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>多分支管理并部署hexo源码及静态资源文件 · 尘飞扬</title><meta name="renderer" content="webkit"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="顾云翔"><meta name="keywords" content="Hexo,HTML,CSS,JavaScript,FrontEnd,顾云翔,前端开发,个人博客"><meta name="description" content="背景将hexo blog部署到github上可以通过 hexo-deploy-git插件完成，它在_config.xml中配置git仓库地址即可。但是这种部署方式，提交的github上的代码仅仅是生成的静态文件，无法对hexo的源码进行管理，让我觉得不方便在多个电脑间同步。
+思路在github上建立"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="LBNq4uFHpAudYV9fvkrbaV00z9y6s4BxIFbPhLFDKdI" name="google-site-verification"><meta content="b14c29f71f435bff7849690cb5254199" name="360-site-verification"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/highlight.css"><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="followme"><a href="http://github.com/guyunxiang" target="_block">follow me</a></div><div class="logo-title"><div class="title"><img src="/images/logo@2x.png"><h3 title=""><a href="/">尘飞扬</a></h3><div class="description"><p>细若微尘，亦可飞扬</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/guyunxiang" target="_block"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/guyunxiang" target="_block"><i class="fa fa-github"></i></a></li><li><a href="http://weibo.com/guyunxing32" target="_block"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><span>© <a href="/">2017 - 2018 </a>尘飞扬</span><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">published with Hexo !</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="search search-pc"><input type="text" placeholder="标题或内容" maxlength="100"><i class="fa fa-search"></i></div><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="https://avatars2.githubusercontent.com/u/7507079?v=3&amp;s=460"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>多分支管理并部署hexo源码及静态资源文件</a></h3></div><div class="post-information"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-03-28</span><i class="fa fa-tag"></i><a href="/categories/技术探讨/" title="技术探讨" class="tag">技术探讨 </a><a href="/tags/hexo/" title="hexo" class="tag">hexo </a></div></div></div><div class="post-content"><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>将hexo blog部署到github上可以通过 hexo-deploy-git插件完成，它在_config.xml中配置git仓库地址即可。<br>但是这种部署方式，提交的github上的代码仅仅是生成的静态文件，无法对hexo的源码进行管理，让我觉得不方便在多个电脑间同步。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>在github上建立两个分支，一个source分支，一个master分支，master分支用以发布静态文件，部署博客使用。source分支用以提交hexo的源码，方便我在多台电脑之间进行同步代码，更新文章。</p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p><strong>第一步</strong></p>
+<p>在Github上新建一个仓库，准备用以部署blog的仓库</p>
+<p><strong>第二步</strong></p>
+<p>克隆仓库到本地，添加.gitignore文件，配置：</p>
+<pre><code class="bash">node_modules/
+public/
+</code></pre>
+<p>提交上传到master分支</p>
+<pre><code class="bash">$ git add -A
+$ git commit -m &#39;init master&#39;
+$ git push origin master
+</code></pre>
+<p>新建分支source</p>
+<pre><code class="bash">$ git checkout -b source
+$ git push origin source
+</code></pre>
+<p>此时，远程source和master分支都有一个文件，.gitignore</p>
+<p><strong>第三步</strong></p>
+<p>初始化一个blog</p>
+<pre><code class="bash">$ hexo init blog
+</code></pre>
+<p>将github仓库里的文件(.git/ &amp; .gitignore)拷贝到blog里</p>
+<p>注：此时github仓库里仅有一个.gitignore文件，同时还有一个.git的文件夹，这两个都要拷贝到blog目录里</p>
+<p><strong>第四步</strong></p>
+<p>切到source分支，提交源码到source分支上</p>
+<pre><code class="bash">$ git add -A
+$ git commit -m &quot;init source&quot;
+$ git push origin source
+</code></pre>
+<p>此时，github仓库远程分支已经拥有了hexo的源码文件</p>
+<p><strong>第五步</strong></p>
+<p>生成静态文件</p>
+<pre><code class="bash">$ hexo g
+</code></pre>
+<p>切到master分支，拷贝public／目录下的静态文件到根目录，提交到远程分支上</p>
+<pre><code class="bash">$ git checkout master
+$ cp -r public/. .
+$ git add -A
+$ git commit -m &quot;hexo generate&quot;
+$ git push origin master
+</code></pre>
+<p>到此，远程 master 分支上就有了 hexo 生成的静态文件，如果启用了 Github Pages 就可以通过 your_name.github.io 访问博客了。</p>
+<p>以上便是我通过 source 分支管理 hexo 源码，通过 master 部署静态文件的方法。</p>
+<hr>
+<p><strong>注意</strong></p>
+<p>我在这里是执行拷贝出新生成的项目文件覆盖到 master 分支下的原项目文件，存在一个弊端，就是只增不减，由于 npm script 无法执行排除删除这种特殊的脚本，所以目前还没发现好的方式清理目录方法，暂时只能手动清理：</p>
+<pre><code class="bash">$ shopt -s extglob
+$ rm -rf !(node_modules|public)
+</code></pre>
+<p>我在这里为了清理目录，启用了 extglob 模式，删除了除 node_modules | public 文件夹以外的所有文件（会保留 .git | .gitignore）</p>
+<p><strong>彩蛋</strong></p>
+<p>为了方便步骤，我在 package.json 中配置执行脚本，方便快捷部署。配置如下：</p>
+<pre><code class="json">{
+  ...
+  &quot;scripts&quot;: {
+    &quot;deploy&quot;: &quot;rm -rf public &amp;&amp; hexo g &amp;&amp; git add -A &amp;&amp; git commit -m &#39;hexo generate&#39; &amp;&amp; git push origin source &amp;&amp; git checkout master &amp;&amp; rm -rf !(node_modules|public) &amp;&amp; cp -r public/. . &amp;&amp; git add -A &amp;&amp; git commit -m &#39;deploy master&#39; &amp;&amp; git push origin master &amp;&amp; git checkout source&quot;
+  },
+  ...
+}
+</code></pre>
+<p>使用方法，在目录下运行：</p>
+<pre><code class="bash">$ npm run deploy
+</code></pre>
+<hr>
+<p><strong>更新于2017年10月31日</strong></p>
+<p>上文中写到 <code>rm -rf !(node_modules|public)</code> 需要打开 extglob 模式，开启方法 <code>shopt -s extglob</code>，这种方法有限制且不利于管理白名单的文件夹名称。</p>
+<p>于是考虑到用 Node.js 操作文件，遍历项目目录下的所有文件，然后根据文件名匹配白名单，删除所有非白名单的文件/文件夹。</p>
+<pre><code class="javascript">// bin/index.js
+
+&#39;use strict&#39;;
+
+var fs = require(&#39;fs&#39;);
+var path = require(&#39;path&#39;);
+var exec = require(&#39;child_process&#39;).exec;
+var files = fs.readdirSync(path.resolve());
+var whitelist = [
+  &#39;.git&#39;,
+  &#39;.gitignore&#39;,
+  &#39;.travis.yml&#39;,
+  &#39;README.md&#39;,
+  &#39;bin&#39;,
+  &#39;node_modules&#39;,
+  &#39;public&#39;
+];
+
+files.forEach(function(filename) {
+  if (whitelist.indexOf(filename) &lt; 0) {
+    exec(&#39;rm -rf &#39; + filename, function(err, stdout, stderr) {
+      if (err) { console.log(err); return; }
+    });
+  }
+});
+
+exec(&#39;cp -r public/. .&#39;, function(err, stdout, stderr) {
+  if (err) { console.error(err); return; }
+});
+</code></pre>
+<p>当 <code>hexo generate</code> 之后，切到 master 分支，运行 <code>node bin/index.js</code> 即可删除除了白名单的所有文件/文件夹。</p>
+<p>再复制所有的打包文件到根目录下。</p>
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=https://guyunxiang.cc/2017/03/28/多分支管理并部署hexo源码及静态资源文件/,尘飞扬,多分支管理并部署hexo源码及静态资源文件" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/04/01/%E8%AE%BE%E7%BD%AE%E5%9B%BD%E5%86%85npm%E9%95%9C%E5%83%8F/" title="设置国内npm镜像" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/03/25/%E7%BB%8D%E5%85%B4%E6%B8%B8%E8%AE%B0%EF%BC%9A%E9%B2%81%E8%BF%85%E6%95%85%E9%87%8C/" title="绍兴游记：鲁迅故里" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
+  var gitalk = new Gitalk({
+    clientID: '8e90905eef1e8a7bfeb1',
+    clientSecret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+    repo: 'guyunxiang.github.io',
+    owner: 'guyunxiang',
+    admin: ['guyunxiang'],
+    id: location.pathname
+  });
+  gitalk.render('gitalk-container')
+})();</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  } else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script></body></html>

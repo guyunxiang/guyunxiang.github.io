@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>grunt的自动刷新 · 尘飞扬</title><meta name="renderer" content="webkit"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="顾云翔"><meta name="keywords" content="Hexo,HTML,CSS,JavaScript,FrontEnd,顾云翔,前端开发,个人博客"><meta name="description" content="grunt很强大，可以帮我我们解决很多繁琐的操作，虽然刚接触不久，但依然感受到其强大之处，这篇记录一下通过grunt.js实现事实刷新页面，
+省去了编码 -&amp;gt; 保存 -&amp;gt; F5..F5..F5..F5…n多个F5操作。
+首先看下项目目录：
+
+然后来看package.json配置：
+{
+ "><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="LBNq4uFHpAudYV9fvkrbaV00z9y6s4BxIFbPhLFDKdI" name="google-site-verification"><meta content="b14c29f71f435bff7849690cb5254199" name="360-site-verification"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/highlight.css"><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="followme"><a href="http://github.com/guyunxiang" target="_block">follow me</a></div><div class="logo-title"><div class="title"><img src="/images/logo@2x.png"><h3 title=""><a href="/">尘飞扬</a></h3><div class="description"><p>细若微尘，亦可飞扬</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/guyunxiang" target="_block"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/guyunxiang" target="_block"><i class="fa fa-github"></i></a></li><li><a href="http://weibo.com/guyunxing32" target="_block"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><span>© <a href="/">2017 - 2018 </a>尘飞扬</span><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">published with Hexo !</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="search search-pc"><input type="text" placeholder="标题或内容" maxlength="100"><i class="fa fa-search"></i></div><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="https://avatars2.githubusercontent.com/u/7507079?v=3&amp;s=460"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>grunt的自动刷新</a></h3></div><div class="post-information"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2014-11-19</span><i class="fa fa-tag"></i><a href="/categories/前端技术/" title="前端技术" class="tag">前端技术 </a><a href="/tags/grunt/" title="grunt" class="tag">grunt </a></div></div></div><div class="post-content"><p>grunt很强大，可以帮我我们解决很多繁琐的操作，虽然刚接触不久，但依然感受到其强大之处，这篇记录一下通过grunt.js实现事实刷新页面，</p>
+<p>省去了编码 -&gt; 保存 -&gt; F5..F5..F5..F5…n多个F5操作。</p>
+<p>首先看下项目目录：</p>
+<p><img src="/images/frontend/grunt_tree.png" alt></p>
+<p>然后来看package.json配置：</p>
+<pre><code class="json">{
+  &quot;name&quot;:&quot;grunt-connect&quot;,
+  &quot;version&quot;:&quot;0.1.0&quot;,
+  &quot;devDependencies&quot;:{
+    &quot;grunt&quot;:&quot;~0.4.1&quot;,
+    &quot;grunt-contrib-connect&quot;:&quot;~0.6.0&quot;,
+    &quot;grunt-contrib-watch&quot;:&quot;~0.5.3&quot;
+  }
+}
+</code></pre>
+<p>这里只用到两个，connect+watch。因为平时写小东西用不到WebStorm等那些的大家伙，sublime就很好用了，所以，为了自动刷新，用connect配置一个server.具体根据个人需要删减，然后通过watch实时监听文件变化，以此达到实时刷新的效果。</p>
+<p>然后到对应目录下执行：</p>
+<pre><code class="bash">$ npm install
+</code></pre>
+<p>完成插件的安装。</p>
+<p>来看Gruntfile.js配置代码：</p>
+<pre><code class="javascript">module.exports = function(grunt) {
+  // 项目配置(任务配置)
+  grunt.initConfig({
+    pkg: grunt.file.readJSON(&#39;package.json&#39;),
+    // 通过connect配置一个server
+    connect:{
+      server:{
+        options:{
+          // 设置端口号
+          port:9009,
+          hostname:&#39;localhost&#39;,
+          livereload:true
+        }
+      }
+    },
+    // 通过watch实时监听代码变化
+    watch: {
+      client: {
+        //监听的文件
+        files: [&#39;view/*&#39;, &#39;css/*&#39;, &#39;js/*&#39;, &#39;images/**/*&#39;],
+        options: {
+          livereload: true
+        }
+      }
+    }
+  });
+
+  // 加载插件
+  grunt.loadNpmTasks(&#39;grunt-contrib-connect&#39;);
+  grunt.loadNpmTasks(&#39;grunt-contrib-watch&#39;);
+
+  // 自定义任务
+  grunt.registerTask(&#39;default&#39;, [&#39;connect&#39;,&#39;watch&#39;]);
+
+};
+</code></pre>
+<p>ok！到这，grunt就配置完成了，</p>
+<p>在cmd中运行：grunt 就可以运行了</p>
+<p><img src="/images/frontend/grunt_default.png" alt></p>
+<p>出现以上效果就说明成功了。</p>
+<p>在chrome中输入：localhost:9009，就会看见我们的项目了。</p>
+<p>然后还有剩下的一部分，就是在chrome中安装livereload插件：</p>
+<p>在chrome设置 -&gt; 更多工具 -&gt; 扩展程序中</p>
+<p><img src="/images/frontend/grunt_tree_more.png" alt></p>
+<p>点击获取更多扩展程序，（一般情况下，获取更多扩展程序会被墙的，所以打不开，需要大家自己解决了）然后搜索livereload，安装</p>
+<p><img src="/images/frontend/grunt_livereload.png" alt></p>
+<p>安装后，在chrome右上角会有一个小图标，空心的时候表示没有运行，点击一下后，中间的圆圈会变成实心，这个时候就可以实现自动刷新了。</p>
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=https://guyunxiang.cc/2014/11/19/grunt的自动刷新/,尘飞扬,grunt的自动刷新" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2014/12/05/JQuery1-8-3%E5%9C%A8IE9%E4%B8%8BgetAttribute%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/" title="JQuery1.8.3在IE9下getAttribute兼容问题" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2014/11/06/360%E5%AE%89%E5%85%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B5%8F%E8%A7%88%E6%A8%A1%E5%BC%8F%E8%B0%83%E6%95%B4/" title="360安全浏览器浏览模式调整" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
+  var gitalk = new Gitalk({
+    clientID: '8e90905eef1e8a7bfeb1',
+    clientSecret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+    repo: 'guyunxiang.github.io',
+    owner: 'guyunxiang',
+    admin: ['guyunxiang'],
+    id: location.pathname
+  });
+  gitalk.render('gitalk-container')
+})();</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  } else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script></body></html>

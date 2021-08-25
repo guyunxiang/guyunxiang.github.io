@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>Alias 简化命令 · 尘飞扬</title><meta name="renderer" content="webkit"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="顾云翔"><meta name="keywords" content="Hexo,HTML,CSS,JavaScript,FrontEnd,顾云翔,前端开发,个人博客"><meta name="description" content="什么是 Alias?Alias 是 linux 内建命令，一种函数，功能是设置命令的别名。
+Alias 有什么用？
+自定义常用命令，简化命令输入长度
+装逼，菜鸟表示看不懂你在输什么
+
+设置常用的 git Aliasmac/linux编辑配置文件：
+$ vim ~/.bashrc
+
+添加 alias:"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="LBNq4uFHpAudYV9fvkrbaV00z9y6s4BxIFbPhLFDKdI" name="google-site-verification"><meta content="b14c29f71f435bff7849690cb5254199" name="360-site-verification"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/highlight.css"><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="followme"><a href="http://github.com/guyunxiang" target="_block">follow me</a></div><div class="logo-title"><div class="title"><img src="/images/logo@2x.png"><h3 title=""><a href="/">尘飞扬</a></h3><div class="description"><p>细若微尘，亦可飞扬</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/guyunxiang" target="_block"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/guyunxiang" target="_block"><i class="fa fa-github"></i></a></li><li><a href="http://weibo.com/guyunxing32" target="_block"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><span>© <a href="/">2017 - 2018 </a>尘飞扬</span><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">published with Hexo !</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="search search-pc"><input type="text" placeholder="标题或内容" maxlength="100"><i class="fa fa-search"></i></div><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="https://avatars2.githubusercontent.com/u/7507079?v=3&amp;s=460"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Alias 简化命令</a></h3></div><div class="post-information"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-09</span><i class="fa fa-tag"></i><a href="/categories/技术探讨/" title="技术探讨" class="tag">技术探讨 </a><a href="/tags/bash/" title="bash" class="tag">bash </a><a href="/tags/git/" title="git" class="tag">git </a></div></div></div><div class="post-content"><h3 id="什么是-Alias"><a href="#什么是-Alias" class="headerlink" title="什么是 Alias?"></a>什么是 Alias?</h3><p>Alias 是 linux 内建命令，一种函数，功能是设置命令的别名。</p>
+<h3 id="Alias-有什么用？"><a href="#Alias-有什么用？" class="headerlink" title="Alias 有什么用？"></a>Alias 有什么用？</h3><ul>
+<li>自定义常用命令，简化命令输入长度</li>
+<li>装逼，菜鸟表示看不懂你在输什么</li>
+</ul>
+<h3 id="设置常用的-git-Alias"><a href="#设置常用的-git-Alias" class="headerlink" title="设置常用的 git Alias"></a>设置常用的 git Alias</h3><h4 id="mac-linux"><a href="#mac-linux" class="headerlink" title="mac/linux"></a>mac/linux</h4><p>编辑配置文件：</p>
+<pre><code class="bash">$ vim ~/.bashrc
+</code></pre>
+<p>添加 alias:</p>
+<pre><code class="bash">alias gss=&#39;git status&#39;
+</code></pre>
+<blockquote>
+<p>注：如果重启命令行未生效，编辑 ~/.bash_profile 文件，添加 source ~/.bashrc 即可。</p>
+</blockquote>
+<h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><h5 id="gitbash"><a href="#gitbash" class="headerlink" title="gitbash"></a>gitbash</h5><pre><code class="bash">$ cd ~
+$ vim .bashrc
+$ 同上
+</code></pre>
+<h5 id="cmd"><a href="#cmd" class="headerlink" title="cmd"></a>cmd</h5><p>在用户文件夹下创建alias.bat</p>
+<pre><code class="bash">$ cd c:\User\[用户名]
+$ vim alias.bat
+</code></pre>
+<p>添加alias规则</p>
+<pre><code class="bash">gss=git status
+</code></pre>
+<p>加入注册表</p>
+<pre><code class="bash">$ reg add &quot;hkcu\software\microsoft\command processor&quot; /v Autorun /t reg_sz /d &quot;doskey /macrofile=C:\Users\[用户名]\alias.bat&quot;
+</code></pre>
+<p>以上，即可在windows/mac/linux中自由使用alias装逼了。</p>
+<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p>windows环境下CMD运行：</p>
+<p><img src="/images/alias/windowsalias.png" alt></p>
+<blockquote>
+<p>在windows中，在文件夹中按住shift键+鼠标右击可以在当前目录下打开命令行<br><img src="/images/alias/opencmd.png" alt></p>
+</blockquote>
+<p>mac/linux环境下终端运行：</p>
+<p><img src="/images/alias/maclinuxalias.png" alt></p>
+<hr>
+<p><strong>更新于2017年10月17日</strong></p>
+<p>常用 git alias 配置</p>
+<pre><code class="bash">alias gss=&#39;git status&#39;
+alias gaa=&#39;git add -A&#39;
+alias gcm=&#39;git commit -m&#39;
+alias gpl=&#39;git pull&#39;
+alias gps=&#39;git push&#39;
+alias gb=&#39;git branch&#39;
+alias gba=&#39;git branch -a&#39;
+alias gck=&#39;git checkout&#39;
+alias gckb=&#39;git checkout -b&#39;
+alias grshd=&#39;git reset --hard&#39;
+alias gmg=&#39;git merge&#39;
+</code></pre>
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=https://guyunxiang.cc/2017/04/09/Alias简化命令/,尘飞扬,Alias 简化命令" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/04/20/Atom%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E6%95%B4%E7%90%86/" title="Atom常用插件整理" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/04/07/React%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E8%AE%AF/" title="React组件间通讯" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
+  var gitalk = new Gitalk({
+    clientID: '8e90905eef1e8a7bfeb1',
+    clientSecret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+    repo: 'guyunxiang.github.io',
+    owner: 'guyunxiang',
+    admin: ['guyunxiang'],
+    id: location.pathname
+  });
+  gitalk.render('gitalk-container')
+})();</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  } else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script></body></html>

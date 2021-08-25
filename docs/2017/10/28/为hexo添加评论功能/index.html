@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>为hexo添加评论功能 · 尘飞扬</title><meta name="renderer" content="webkit"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="顾云翔"><meta name="keywords" content="Hexo,HTML,CSS,JavaScript,FrontEnd,顾云翔,前端开发,个人博客"><meta name="description" content="Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+
+通常情况下，Hexo 的主题都自带一到两种评论插件集成进去，比如国内的多说（已关闭）、友言、畅言等，国外的比较有名的像 Disqus 。
+接入方法通常"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="LBNq4uFHpAudYV9fvkrbaV00z9y6s4BxIFbPhLFDKdI" name="google-site-verification"><meta content="b14c29f71f435bff7849690cb5254199" name="360-site-verification"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/highlight.css"><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="followme"><a href="http://github.com/guyunxiang" target="_block">follow me</a></div><div class="logo-title"><div class="title"><img src="/images/logo@2x.png"><h3 title=""><a href="/">尘飞扬</a></h3><div class="description"><p>细若微尘，亦可飞扬</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/guyunxiang" target="_block"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/guyunxiang" target="_block"><i class="fa fa-github"></i></a></li><li><a href="http://weibo.com/guyunxing32" target="_block"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><span>© <a href="/">2017 - 2018 </a>尘飞扬</span><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">published with Hexo !</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="search search-pc"><input type="text" placeholder="标题或内容" maxlength="100"><i class="fa fa-search"></i></div><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="https://avatars2.githubusercontent.com/u/7507079?v=3&amp;s=460"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>为hexo添加评论功能</a></h3></div><div class="post-information"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-10-28</span><i class="fa fa-tag"></i><a href="/categories/技术探讨/" title="技术探讨" class="tag">技术探讨 </a><a href="/tags/hexo/" title="hexo" class="tag">hexo </a></div></div></div><div class="post-content"><blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+</blockquote>
+<p>通常情况下，Hexo 的主题都自带一到两种评论插件集成进去，比如国内的多说（已关闭）、友言、畅言等，国外的比较有名的像 Disqus 。</p>
+<p>接入方法通常也很简单，在主题的 <code>_config.yml</code> 文件中配置下即可，例如我的主题配置文件：</p>
+<pre><code class="yml"># Comment
+duoshuo:
+disqus:
+</code></pre>
+<p>在配置项里设置自己对应平台的 ID 即可。</p>
+<p>这里主要想介绍下其他的评论插件接入，依赖于 github issue 的 <a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">gitment</a> 以及在 gitment 上进行改进优化的 <a href="https://github.com/gitalk/gitalk" target="_blank" rel="noopener">gitalk</a>。</p>
+<p>因为这两款插件都以 github issue 来管理评论，而我们的 Hexo 也正好部署在 github 上，更加利于统一管理。</p>
+<p>对比第三方评论插件：</p>
+<p>优点：与 github 集成，项目与评论在一起，统一管理，不用额外注册平台账号。</p>
+<p>缺点：评论以文章为 issue，即每一个文章页面就得有一个评论的 issue，文章多了以后，issue 也就多了，不太方便；只有项目的所有者才能建 issue，这意味着所有的评论都需要你自己初始化一遍，如果没有初始化，别人是不能评论的；评论功能有限，想要丰富评论效果则不行。</p>
+<p><strong>接入gitalk</strong></p>
+<p>在配置项中加入 gitalk 配置文件：</p>
+<pre><code class="yml"># themes/_config.yml
+
+# Comment
+duoshuo:
+disqus:
+gitalk:
+  enable: true
+  owner: &#39;github repo owner&#39;
+  repo: &#39;github repo name&#39;
+  ClientID: &#39;your ClientID&#39;
+  ClientSecret: &#39;your ClientSecret&#39;
+</code></pre>
+<p>引入样式：</p>
+<pre><code class="jade">// head.jade
+link(rel=&quot;stylesheet&quot;, href= url_for(&#39;css/gitalk.css&#39;))
+</code></pre>
+<p>添加评论代码：</p>
+<pre><code class="jade">// comments.jade
+
+if theme.gitalk.enable
+  #gitalk-container
+  script(src= url_for(&#39;js/gitalk.min.js&#39;))
+  script.
+    (function(){
+      var gitalk = new Gitalk({
+        clientID: &#39;#{theme.gitalk.ClientID}&#39;,
+        clientSecret: &#39;#{theme.gitalk.ClientSecret}&#39;,
+        repo: &#39;#{theme.gitalk.repo}&#39;,
+        owner: &#39;#{theme.gitalk.owner}&#39;,
+      });
+      gitalk.render(&#39;gitalk-container&#39;)
+    })();
+</code></pre>
+<p>以上，便完成了 gitalk 的接入，注意，gitalk 的接入在本地是无法验证的，我记得 gitment 能在本地验证的，所有需要部署到 github 上来查看是否接入完成， 再根据自己的喜好对样式进行适当调整即可。</p>
+<p>gitment 接入跟 gitalk 接入一样。</p>
+<p><strong>gitment 跟 gitalk 如何选择</strong></p>
+<p>两者在功能上相同，都是基于 github issue 的评论插件，安装方式也基本相同，gitalk 后来于 gitment，可以兼容 gitment 的评论，我一开始也是接入 gitment，似乎 gitment 的作者已经弃坑了，且无法兼容移动端，所以找到了 gitalk，gitalk 在样式稍显活力，gitment 更加简约，gitalk 可以快速的回复别人，gitment 则不行，所以，建议是选择 gitalk。</p>
+<p><strong>自动初始化所有评论</strong></p>
+<p>有位朋友位这两个写了个 ruby 的脚本，根据 sitemap 或自定义URL名单自动初始化所有的评论，有兴趣的可以去看看，方便初始化评论 issue</p>
+<hr>
+<p><strong>2017年12月19日更新</strong></p>
+<p>调整了 gitalk 配置项，默认配置 id 为 <code>location.href</code>，会带上域名，那我这个域名买着玩的，以后可能会换，那到时候迁移这个评论成本就高了，gitalk 会根据配置中的 labels 生成 github issue 的 label，同时还会根据 id 强制生成一个 label 来保证唯一性，所以这里需要改动一下 id 的配置值，不带域名，只保留路径以达到以后域名切换的便携性，同时，不带域名以后，在本地调试时也可以看到评论了。</p>
+<p>改动点1：</p>
+<pre><code class="yml"># themes/_config.yml
+
+# Comment
+duoshuo:
+disqus:
+gitalk:
+  enable: true
+  owner: &#39;github repo owner&#39;
+  repo: &#39;github repo name&#39;
+  ClientID: &#39;your ClientID&#39;
+  ClientSecret: &#39;your ClientSecret&#39;
+  id: location.pathname
+</code></pre>
+<p>改动点2：</p>
+<pre><code class="jade">// comments.jade
+
+if theme.gitalk.enable
+  #gitalk-container
+  script(src= url_for(&#39;js/gitalk.min.js&#39;))
+  script.
+    (function(){
+      var gitalk = new Gitalk({
+        clientID: &#39;#{theme.gitalk.ClientID}&#39;,
+        clientSecret: &#39;#{theme.gitalk.ClientSecret}&#39;,
+        repo: &#39;#{theme.gitalk.repo}&#39;,
+        owner: &#39;#{theme.gitalk.owner}&#39;,
+        id: #{theme.gitalk.id}
+      });
+      gitalk.render(&#39;gitalk-container&#39;)
+    })();
+</code></pre>
+<p>改动点3：</p>
+<p>登录 github 进入博客项目，点击 issue 筛选 label，把带有域名的 label 编辑，删掉域名，保存，即可。</p>
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=https://guyunxiang.cc/2017/10/28/为hexo添加评论功能/,尘飞扬,为hexo添加评论功能" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2018/11/29/OpenEmu%E6%A8%A1%E6%8B%9F%E5%99%A8/" title="OpenEmu，MacOS下强大游戏模拟器" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/10/26/%E4%B8%BAhexo%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" title="为hexo添加自定义站内搜索功能" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
+  var gitalk = new Gitalk({
+    clientID: '8e90905eef1e8a7bfeb1',
+    clientSecret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+    repo: 'guyunxiang.github.io',
+    owner: 'guyunxiang',
+    admin: ['guyunxiang'],
+    id: location.pathname
+  });
+  gitalk.render('gitalk-container')
+})();</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  } else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script></body></html>

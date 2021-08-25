@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>vue-init 项目分析：中篇 · 尘飞扬</title><meta name="renderer" content="webkit"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="顾云翔"><meta name="keywords" content="Hexo,HTML,CSS,JavaScript,FrontEnd,顾云翔,前端开发,个人博客"><meta name="description" content="在上一篇文章中，我介绍 vue-init 初始化项目中根目录下的配置文件。这一篇着重介绍 vue-init 项目对于 webpack 的配置。
+项目结构：
+
+这里的 build 和 config 目录下就是对于 webpack 的配置文件，其中 config 目录中定义了 dev 环境和 prod "><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="LBNq4uFHpAudYV9fvkrbaV00z9y6s4BxIFbPhLFDKdI" name="google-site-verification"><meta content="b14c29f71f435bff7849690cb5254199" name="360-site-verification"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/highlight.css"><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="followme"><a href="http://github.com/guyunxiang" target="_block">follow me</a></div><div class="logo-title"><div class="title"><img src="/images/logo@2x.png"><h3 title=""><a href="/">尘飞扬</a></h3><div class="description"><p>细若微尘，亦可飞扬</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/guyunxiang" target="_block"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/guyunxiang" target="_block"><i class="fa fa-github"></i></a></li><li><a href="http://weibo.com/guyunxing32" target="_block"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><span>© <a href="/">2017 - 2018 </a>尘飞扬</span><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">published with Hexo !</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="search search-pc"><input type="text" placeholder="标题或内容" maxlength="100"><i class="fa fa-search"></i></div><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="https://avatars2.githubusercontent.com/u/7507079?v=3&amp;s=460"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>vue-init 项目分析：中篇</a></h3></div><div class="post-information"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-08-09</span><i class="fa fa-tag"></i><a href="/categories/前端技术/" title="前端技术" class="tag">前端技术 </a><a href="/tags/vue/" title="vue" class="tag">vue </a><a href="/tags/webpack/" title="webpack" class="tag">webpack </a></div></div></div><div class="post-content"><p>在上一篇<a href="/2017/08/07/vue-init项目分析/">文章</a>中，我介绍 vue-init 初始化项目中根目录下的配置文件。这一篇着重介绍 vue-init 项目对于 webpack 的配置。</p>
+<p>项目结构：</p>
+<p><img src="/images/vue/QQ20170809-150400.png" alt></p>
+<p>这里的 build 和 config 目录下就是对于 webpack 的配置文件，其中 config 目录中定义了 dev 环境和 prod 环境的配置项。 build 目录下主要配置了 webpack 的设置。</p>
+<p><strong>package.json</strong></p>
+<p><img src="/images/vue/QQ20170809-150419.png" alt></p>
+<p>在 package.json 中定义了三个命令，npm start 等同于 npm run dev 用以开发调试；npm run build 用以打包。</p>
+<p><strong>config/dev.env.js</strong></p>
+<pre><code class="javascript">var merge = require(&#39;webpack-merge&#39;)
+var prodEnv = require(&#39;./prod.env&#39;)
+
+module.exports = merge(prodEnv, {
+  NODE_ENV: &#39;&quot;development&quot;&#39;
+})
+</code></pre>
+<p>这里是开始调试时的 webpack 配置文件，引用了 webpack-merge 插件来合并 prodEnv 的配置项，指定 Node 环境变量为 “development”</p>
+<p><strong>config/prod.env.js</strong></p>
+<pre><code class="javascript">module.exports = {
+  NODE_ENV: &#39;&quot;production&quot;&#39;
+}
+</code></pre>
+<p>这里是用于打包使用的 webpack 配置文件，指定 Node 环境变量为 “production”</p>
+<p><strong>config/test.env.js</strong></p>
+<pre><code class="javascript">var merge = require(&#39;webpack-merge&#39;)
+var devEnv = require(&#39;./dev.env&#39;)
+
+module.exports = merge(devEnv, {
+  NODE_ENV: &#39;&quot;testing&quot;&#39;
+})
+</code></pre>
+<p>这里是用于单元测试/集成测试时使用的 webpack 配置文件，合并 dev 的配置项并指定 Node 的环境变量为 “testing”</p>
+<p><strong>config/index.js</strong></p>
+<pre><code class="javascript">// see http://vuejs-templates.github.io/webpack for documentation.
+var path = require(&#39;path&#39;)
+
+module.exports = {
+  build: {
+    env: require(&#39;./prod.env&#39;),
+    index: path.resolve(__dirname, &#39;../dist/index.html&#39;),
+    assetsRoot: path.resolve(__dirname, &#39;../dist&#39;),
+    assetsSubDirectory: &#39;static&#39;,
+    assetsPublicPath: &#39;/&#39;,
+    productionSourceMap: true,
+    // Gzip off by default as many popular static hosts such as
+    // Surge or Netlify already gzip all static assets for you.
+    // Before setting to `true`, make sure to:
+    // npm install --save-dev compression-webpack-plugin
+    productionGzip: false,
+    productionGzipExtensions: [&#39;js&#39;, &#39;css&#39;],
+    // Run the build command with an extra argument to
+    // View the bundle analyzer report after build finishes:
+    // `npm run build --report`
+    // Set to `true` or `false` to always turn it on or off
+    bundleAnalyzerReport: process.env.npm_config_report
+  },
+  dev: {
+    env: require(&#39;./dev.env&#39;),
+    port: 8080,
+    autoOpenBrowser: true,
+    assetsSubDirectory: &#39;static&#39;,
+    assetsPublicPath: &#39;/&#39;,
+    proxyTable: {},
+    // CSS Sourcemaps off by default because relative paths are &quot;buggy&quot;
+    // with this option, according to the CSS-Loader README
+    // (https://github.com/webpack/css-loader#sourcemaps)
+    // In our experience, they generally work as expected,
+    // just be aware of this issue when enabling this option.
+    cssSourceMap: false
+  }
+}
+</code></pre>
+<p>这里是定义 dev 和 prod 配置的通用配置地方。</p>
+<pre><code class="javascript">build: {
+  env: require(&#39;./prod.env&#39;), // 引入上面声明的 NODE_ENV
+  index: path.resolve(__dirname, &#39;../dist/index.html&#39;),  // 指定 index.html 路径
+  assetsRoot: path.resolve(__dirname, &#39;../dist&#39;), // 指定打包后的资源根路径
+  assetsSubDirectory: &#39;static&#39;, // 存放打包后静态资源的目录，/dist/static
+  assetsPublicPath: &#39;/&#39;,  // 发布路径，会注入到 index.html 中的 src 资源地址引用，用以配置服务器路径或者 CDN 设置
+  productionSourceMap: true,  // 是否启用 source-map
+  // Gzip off by default as many popular static hosts such as
+  // Surge or Netlify already gzip all static assets for you.
+  // Before setting to `true`, make sure to:
+  // npm install --save-dev compression-webpack-plugin
+  productionGzip: false,  // 是否启用 gzip
+  productionGzipExtensions: [&#39;js&#39;, &#39;css&#39;],  // gzip 压缩的文件后缀名
+  // Run the build command with an extra argument to
+  // View the bundle analyzer report after build finishes:
+  // `npm run build --report`
+  // Set to `true` or `false` to always turn it on or off
+  bundleAnalyzerReport: process.env.npm_config_report // 打包后的分析报告
+}
+</code></pre>
+<pre><code class="javascript">dev: {
+  env: require(&#39;./dev.env&#39;),  // 引入上面声明的 NODE_ENV
+  port: 8080, // dev-server 端口配置
+  autoOpenBrowser: true,  // 是否启动打开浏览器
+  assetsSubDirectory: &#39;static&#39;, // 存放打包后静态资源的目录，/dist/static
+  assetsPublicPath: &#39;/&#39;,  // 发布路径，会注入到 index.html 中的 src 资源地址引用，用以配置服务器路径或者 CDN 设置
+  proxyTable: {}, // 代理配置，例如解决本地调试接口跨域问题
+  // CSS Sourcemaps off by default because relative paths are &quot;buggy&quot;
+  // with this option, according to the CSS-Loader README
+  // (https://github.com/webpack/css-loader#sourcemaps)
+  // In our experience, they generally work as expected,
+  // just be aware of this issue when enabling this option.
+  cssSourceMap: false // 是否开启 css source-map
+}
+</code></pre>
+<p>以上，是对 vue init 的骨架项目 config 目录下对 webpack 配置文件的介绍。</p>
+<p>主要是声明了三个模式（开发，测试，部署）下的环境变量，在 config/index.js 文件中指定了打包及调试时的通用配置，需要注意的可能就是可能要配置端口号，接口代理，打包的路径以及对发布路径的设置。</p>
+<p>关于 webpack 具体配置及 build 目录下配置文件的详细介绍，见后续文章。</p>
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=https://guyunxiang.cc/2017/08/09/vue-init项目分析2/,尘飞扬,vue-init 项目分析：中篇" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/09/15/git%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AAssh-key/" title="git配置多个ssh-key" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/08/08/Mac%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%89%8B%E8%AE%B0/" title="Mac使用常见问题手记" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
+  var gitalk = new Gitalk({
+    clientID: '8e90905eef1e8a7bfeb1',
+    clientSecret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+    repo: 'guyunxiang.github.io',
+    owner: 'guyunxiang',
+    admin: ['guyunxiang'],
+    id: location.pathname
+  });
+  gitalk.render('gitalk-container')
+})();</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  } else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script></body></html>

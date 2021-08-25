@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>为hexo添加自定义站内搜索功能 · 尘飞扬</title><meta name="renderer" content="webkit"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="顾云翔"><meta name="keywords" content="hexo,hexo-generator-search,hexo-generator-json-content,自定义搜索,站内搜索,搜索功能"><meta name="description" content="Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+
+因为 Hexo 是纯静态的博客框架，所以想要在自己的 Hexo 博客实现站内搜索有以下两种途径：
+1. 站内搜索工具可以使用 Google 站内搜索或"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="LBNq4uFHpAudYV9fvkrbaV00z9y6s4BxIFbPhLFDKdI" name="google-site-verification"><meta content="b14c29f71f435bff7849690cb5254199" name="360-site-verification"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/highlight.css"><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="followme"><a href="http://github.com/guyunxiang" target="_block">follow me</a></div><div class="logo-title"><div class="title"><img src="/images/logo@2x.png"><h3 title=""><a href="/">尘飞扬</a></h3><div class="description"><p>细若微尘，亦可飞扬</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/guyunxiang" target="_block"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/guyunxiang" target="_block"><i class="fa fa-github"></i></a></li><li><a href="http://weibo.com/guyunxing32" target="_block"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><span>© <a href="/">2017 - 2018 </a>尘飞扬</span><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">published with Hexo !</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="search search-pc"><input type="text" placeholder="标题或内容" maxlength="100"><i class="fa fa-search"></i></div><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="https://avatars2.githubusercontent.com/u/7507079?v=3&amp;s=460"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>为hexo添加自定义站内搜索功能</a></h3></div><div class="post-information"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-10-26</span><i class="fa fa-tag"></i><a href="/categories/技术探讨/" title="技术探讨" class="tag">技术探讨 </a><a href="/tags/hexo/" title="hexo" class="tag">hexo </a></div></div></div><div class="post-content"><blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+</blockquote>
+<p>因为 Hexo 是纯静态的博客框架，所以想要在自己的 Hexo 博客实现站内搜索有以下两种途径：</p>
+<h3 id="1-站内搜索工具"><a href="#1-站内搜索工具" class="headerlink" title="1. 站内搜索工具"></a>1. 站内搜索工具</h3><p>可以使用 Google 站内搜索或者百度站内搜索，也可以使用 Swiftype 或 tinysou。</p>
+<p>优点：功能强大，搜索准确，不需要做太多的事，只要配置好即可。</p>
+<p>缺点：样式可能与博客的主题不契合，颜值上差点，且有申请条件限制。</p>
+<p>我这里主要介绍添加自定义的站内搜索，所以就不介绍站内搜索工具了，具体如何接入，可以上网搜索下相关文章。</p>
+<h3 id="2-自定义的站内搜索工具"><a href="#2-自定义的站内搜索工具" class="headerlink" title="2. 自定义的站内搜索工具"></a>2. 自定义的站内搜索工具</h3><p>Hexo 官网的插件库中有提供两个插件可以用来为我们的自定义搜索提供帮助，分别是：</p>
+<p><a href="https://github.com/alexbruno/hexo-generator-json-content" target="_blank" rel="noopener">hexo-generator-json-content</a></p>
+<p><a href="https://github.com/PaicHyperionDev/hexo-generator-search" target="_blank" rel="noopener">hexo-generator-search</a></p>
+<p>这两个插件分别可以在使用 Hexo generate 打包的时候，在 public 目录下生成 content.json 或 search.json 文件，这两个文件会包含项目中所有的博客页面信息，用以在自定义搜索时匹配想要搜索的文章。</p>
+<p>优点：自己动手，丰衣足食，可以根据自己的需求来做，样式也是自己设计，与博客最契合。</p>
+<p>缺点：需要自己写搜索匹配和渲染列表的代码，因为是纯前端实现，没有服务端的处理，对语义的分词处理不行，无法做到精准搜索真正想搜的文章。</p>
+<p>尽管自定义站内搜索有这个很致命的问题，但是我还是要介绍如何实现它。</p>
+<h3 id="hexo-generator-json-content"><a href="#hexo-generator-json-content" class="headerlink" title="hexo-generator-json-content"></a>hexo-generator-json-content</h3><p><strong>1. 前置准备</strong></p>
+<p>安装插件</p>
+<pre><code class="bash">$ npm i hexo-generator-json-content --save
+</code></pre>
+<p>安装完成后，需要对 <code>_config.yml</code> 进行配置，我的配置如下：</p>
+<pre><code class="yml"># hexo-generator-json-content
+jsonContent:
+  meta:             false
+  keywords:         false   # 暂时没用上，后面会用起来
+  dateFormat:       &#39;YYYY-MM-DD&#39;
+  pages:            false   # 因为我仅对文章进行搜索，不搜页面，所以 pages 为 false
+  posts:
+    title:          true    # 文章的标题
+    slug:           false
+    date:           true    # 文章的日期
+    updated:        false
+    comments:       false
+    path:           true    # 文章的相对路径
+    link:           false
+    permalink:      false
+    excerpt:        false
+    keywords:       false
+    text:           true    # 文章的内容（仅文字部分，非 markdown 源码）
+    raw:            false
+    content:        false
+    categories:     false   # 因为我的博客已经有分类页面了，所以没必要再搜分类，设置 false
+    tags:           false   # 同上
+</code></pre>
+<blockquote>
+<p>具体配置项说明，见<a href="https://github.com/alexbruno/hexo-generator-json-content" target="_blank" rel="noopener">这里</a></p>
+</blockquote>
+<p>以上，便完成了最基本的配置，在博客目录下运行 <code>hexo generate</code> 便会生成所有文章数据的 content.json 文件。</p>
+<p>看下根据以上配置，生成 content.json 其中一篇文章的内容：</p>
+<pre><code class="JavaScript">[{
+  &quot;title&quot;: &quot;git配置多个ssh-key&quot;,
+  &quot;date&quot;: &quot;2017-09-15&quot;,
+  &quot;path&quot;: &quot;2017/09/15/git配置多个ssh-key/&quot;,
+  &quot;text&quot;: &quot;许多 Git 服务器都使用 SSH 公钥进行认证。。此处省略 n 多个字&quot;
+}]
+</code></pre>
+<p>根据 title 和 text 便可以通过用户输入的内容进行匹配相应的文章，date 标识文章的日期，path 用以跳转文章页面。这四条基本数据是最基本的搜索要求了。</p>
+<p>hexo-generator-search 功能和 hexo-generator-json-content 类似，只是生成字段少，没 hexo-generator-json-content 强大。</p>
+<p><strong>2. 实现搜索功能</strong></p>
+<p>在首页添加搜索框，搜索按钮，获取用户输入的内容。为自己的 Hexo 博客添加搜索结果页面，这里需要对自己博客主题的源码进行修改。</p>
+<blockquote>
+<p>注：因为每个主题代码布局不一样，这里不具体介绍怎么为自己的博客添加页面了，大致的流程就是 hexo new page, 然后在主题的源码里为这个 page 添加相应的布局代码</p>
+</blockquote>
+<p>因为搜索功能时候需要交互的操作，所以 Hexo 一开始生成的只是一个空白的搜索结果页而已，需要在 js 匹配到结果后，再渲染到这个页面上。</p>
+<p>添加搜索框，完善样式：</p>
+<pre><code class="jade">// themes/&lt;theme-name&gt;/layout/partial/nav.jade
+...
+.search
+  input(id=&quot;search-input&quot; type=&quot;text&quot; placeholder=&quot;标题或内容&quot; maxlength=&quot;100&quot;)
+  i.fa.fa-search
+...
+</code></pre>
+<p>效果：</p>
+<p><img src="/images/article/WX20171026-165642.png" alt></p>
+<p>未搜索框添加功能：</p>
+<pre><code class="JavaScript">// themes/&lt;theme-name&gt;/source/js/index.js
+$(&#39;#search-input&#39;).on(&#39;keypress&#39;, function(e){
+  if (e.keyCode == 13) {
+    handleSearch($(this).val());
+  }
+});
+
+$(&#39;.search .fa.fa-search&#39;).on(&#39;click&#39;, function(){
+  handleSearch($(&#39;#search-input&#39;).val());
+});
+
+function handleSearch(value) {
+  if (value) {
+    window.location.href = &#39;/search/?w=&#39;+ value.trim();
+  }
+}
+</code></pre>
+<p>到这里，在输入框中要搜索的内容，按回车或者点搜索按钮即可触发页面的跳转，跳转到预定的 /search 页面。以参数的形式拼在 URL 后面。</p>
+<p>跳转到搜索页面后，触发搜索匹配的逻辑：</p>
+<pre><code class="JavaScript">// themes/&lt;theme-name&gt;/source/js/index.js
+var url = window.location.href;
+
+// 判断是否是搜索页面
+if (url.indexOf(&#39;search&#39;) &gt; -1) {
+  var searchVal = getKeyword();
+  var resultList = [];
+  if (!searchVal) { window.location.href = &#39;/&#39;; }
+  $.get(&#39;../content.json&#39;, function(data) {
+    data.forEach(function(item) {
+      if (
+        item.title.indexOf(searchVal) &gt; -1 ||
+        item.text.indexOf(searchVal) &gt; -1
+      ) {
+        resultList.push(item);
+      }
+    });
+    renderResultList(resultList);
+  });
+}
+
+// 判断是否存在搜索关键字
+function getKeyword() {
+  var searchVal = decodeURIComponent(url.split(&#39;w=&#39;)[1]);
+  if (url.indexOf(&#39;w=&#39;) &lt; 0) { return null; }
+  if (searchVal === &#39;&#39;) { return null; }
+  return searchVal;
+}
+
+// 渲染结果列表
+function renderResultList(dataList) {
+  var templateHtml = &#39;&lt;ul class=&quot;listing&quot;&gt;&#39;;
+  if (dataList.length) {
+    dataList.forEach(function(item) {
+      templateHtml +=
+        &#39;&lt;div class=&quot;listing-item&quot;&gt;&#39; +
+          &#39;&lt;div class=&quot;list-post&quot;&gt;&#39; +
+            &#39;&lt;a href=&quot;/&#39;+ item.path +&#39;&quot; title=&quot;&#39;+ item.title +&#39;&quot;&gt;&#39; +
+              item.title +
+            &#39;&lt;/a&gt;&#39; +
+            &#39;&lt;div class=&quot;post-time&quot;&gt;&#39; +
+              &#39;&lt;span class=&quot;date&quot;&gt;&#39; +
+                item.date +
+              &#39;&lt;/span&gt;&#39; +
+            &#39;&lt;/div&gt;&#39; +
+          &#39;&lt;/div&gt;&#39; +
+        &#39;&lt;/div&gt;&#39;;
+    });
+  } else {
+    templateHtml += &#39;&lt;p&gt;返回首页重新搜索，&lt;a href=&quot;/&quot;&gt;点我&lt;/a&gt;&lt;/p&gt;&#39;;
+  }
+  templateHtml += &#39;&lt;/ul&gt;&#39;;
+  $(&#39;.post-information &gt; .meta &gt; .info&#39;).append(&#39;本次共搜索到 &#39; + dataList.length + &#39; 条结果&#39;);
+  $(&#39;.search-content&#39;).html(templateHtml);
+}
+</code></pre>
+<p>效果：</p>
+<p><img src="/images/article/WX20171026-173307.png" alt></p>
+<p>以上，便完成了基本的自定义站内搜索功能，高端大气上档次，低调奢华有内涵。但是还有很多需要改进的地方，这里先列出来，后续优化掉。</p>
+<hr>
+<h3 id="待优化功能："><a href="#待优化功能：" class="headerlink" title="待优化功能："></a>待优化功能：</h3><p>1.搜索分词的处理，提高搜索的精确度，现在是最简单的字符串精确匹配且区分大小写，但有时候搜索的内容并不能精确表意，比如 ssh-key，搜 sshkey 则搜不到。</p>
+<p>2.渲染结果列表展示匹配到的内容，就像百度一样，搜索的结果又标题跟内容，在内容中高亮匹配到的内容，清晰了然，目前还仅仅只是展示了匹配到的文章标题。</p>
+<hr>
+<p><strong>更新于2017年11月06日</strong></p>
+<p>1.搜索分词的优化，通过调整部分 <code>hexo-generator-json-content</code> 源码，在文章中添加 keywords 关键字，使之在生成 content.json 时包含我指定的 keywords，来手动分词可能被搜索的内容，达到搜索的准确性提高。</p>
+<p>2.渲染结果已高亮匹配的关键字，并从文章中包含关键字的位置截取部分内容作为概述展示在搜索结果中，调整了搜索结果列表页的样式。</p>
+<p><img src="/images/article/WX20171106-164813.png" alt></p>
+<p>未完待续…</p>
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=https://guyunxiang.cc/2017/10/26/为hexo添加自定义站内搜索功能/,尘飞扬,为hexo添加自定义站内搜索功能" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/10/28/%E4%B8%BAhexo%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" title="为hexo添加评论功能" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/09/15/git%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AAssh-key/" title="git配置多个ssh-key" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
+  var gitalk = new Gitalk({
+    clientID: '8e90905eef1e8a7bfeb1',
+    clientSecret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+    repo: 'guyunxiang.github.io',
+    owner: 'guyunxiang',
+    admin: ['guyunxiang'],
+    id: location.pathname
+  });
+  gitalk.render('gitalk-container')
+})();</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  } else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script></body></html>
