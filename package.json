@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "hexo server",
-    "deploy": "rm -rf public && hexo g && git add -A && git commit -m 'hexo generate' && git push origin source && git checkout master && node bin/index.js && git add -A && git commit -m 'deploy master' && git push origin master && git checkout source"
+    "deploy": "mv public docs"
   },
   "dependencies": {
     "hexo": "^3.3.9",
