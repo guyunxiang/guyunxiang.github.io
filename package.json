@@ -6,8 +6,8 @@
     "version": "5.4.0"
   },
   "scripts": {
-    "start": "hexo server",
-    "build": "rm -rf docs && hexo d && mv public docs"
+    "start": "hexo s",
+    "build": "hexo g"
   },
   "dependencies": {
     "hexo": "^5.4.0",
