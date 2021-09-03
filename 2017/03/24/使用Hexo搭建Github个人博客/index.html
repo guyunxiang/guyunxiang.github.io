@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>使用Hexo搭建Github个人博客 · 尘飞扬</title><meta name="renderer" content="webkit"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="顾云翔"><meta name="keywords" content="Hexo,github,blog"><meta name="description" content="网上关于hexo搭建博客的文章已经有很多，这里只做为个人博客的试笔文章，记录下hexo博客搭建的过程和心得。
+Hexo
+Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+
+搭建准备
+Node.js
+Gi"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="LBNq4uFHpAudYV9fvkrbaV00z9y6s4BxIFbPhLFDKdI" name="google-site-verification"><meta content="b14c29f71f435bff7849690cb5254199" name="360-site-verification"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/highlight.css"><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="followme"><a href="http://github.com/guyunxiang" target="_block">follow me</a></div><div class="logo-title"><div class="title"><img src="/images/logo@2x.png"><h3 title=""><a href="/">尘飞扬</a></h3><div class="description"><p>细若微尘，亦可飞扬</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/guyunxiang" target="_block"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/guyunxiang" target="_block"><i class="fa fa-github"></i></a></li><li><a href="http://weibo.com/guyunxing32" target="_block"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><span>© <a href="/">2017 - 2018 </a>尘飞扬</span><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">published with Hexo !</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="search search-pc"><input type="text" placeholder="标题或内容" maxlength="100"><i class="fa fa-search"></i></div><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="https://avatars2.githubusercontent.com/u/7507079?v=3&amp;s=460"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>使用Hexo搭建Github个人博客</a></h3></div><div class="post-information"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-03-24</span><i class="fa fa-tag"></i><a href="/categories/技术探讨/" title="技术探讨" class="tag">技术探讨 </a><a href="/tags/hexo/" title="hexo" class="tag">hexo </a></div></div></div><div class="post-content"><p>网上关于hexo搭建博客的文章已经有很多，这里只做为个人博客的试笔文章，记录下hexo博客搭建的过程和心得。</p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+</blockquote>
+<h3 id="搭建准备"><a href="#搭建准备" class="headerlink" title="搭建准备"></a>搭建准备</h3><ul>
+<li>Node.js</li>
+<li>Git &amp; Github</li>
+</ul>
+<p>Node.js安装方式很多，见 <a href="../如何安装Nodejs/">如何安装Node.js</a> 文章<br>Git 安装方法，见 <a href="../如何安装Git/">如何安装Git</a> 文章</p>
+<p>node.js 和 git 都安装完成后即可开始搭建hexo个人博客了。</p>
+<h3 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h3><h4 id="安装-hexo"><a href="#安装-hexo" class="headerlink" title="安装 hexo"></a>安装 hexo</h4><pre><code class="bash">$ npm i -g hexo-cli
+</code></pre>
+<blockquote>
+<p>Mac 用户<br>您在编译时可能会遇到问题，请先到 App Store 安装 Xcode，Xcode 完成后，启动并进入 Preferences -&gt; Download -&gt; Command Line Tools -&gt; Install 安装命令行工具。</p>
+</blockquote>
+<h4 id="初始化-blog"><a href="#初始化-blog" class="headerlink" title="初始化 blog"></a>初始化 blog</h4><pre><code class="bash">$ hexo init &lt;folder&gt;
+$ cd &lt;folder&gt;
+$ npm install
+</code></pre>
+<h4 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h4><p>你可以执行下列命令来创建一篇新文章。</p>
+<pre><code class="bash">$ hexo new [layout] &lt;title&gt;
+</code></pre>
+<blockquote>
+<p>可以在命令中指定文章的布局（layout），默认为 post，可以通过修改_config.yml 中的 default_layout 参数来指定默认布局。</p>
+</blockquote>
+<h4 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h4><p>使用 hexo-server 启动本地服务查看博客</p>
+<blockquote>
+<p>Hexo 3.0 把服务器独立成了个别模块，必须先安装 hexo-server 才能使用。</p>
+</blockquote>
+<pre><code class="bash">$ npm i hexo-server --save
+</code></pre>
+<p><strong>启动服务</strong></p>
+<pre><code class="bash">$ hexo server
+</code></pre>
+<p><strong>实时刷新</strong></p>
+<p>安装 hexo-browsersync，监听文档变化，实时刷新页面</p>
+<pre><code class="bash">$ npm i hexo-browsersync --save
+$ hexo server
+</code></pre>
+<blockquote>
+<p>注：hexo-browsersync 插件会导致当调试阶段编写文章过长时，超出的部分乱码，<a href="https://github.com/hexojs/hexo/issues/2149" target="_blank" rel="noopener">issue地址</a>，如果习惯长文的，建议手动刷新。</p>
+</blockquote>
+<h4 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h4><p>使用 hexo generate 生成静态文件</p>
+<pre><code class="bash">$ hexo generate
+</code></pre>
+<p><strong>监听文件变动</strong></p>
+<pre><code class="bash">$ hexo generate --watch
+</code></pre>
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><pre><code class="bash">$ hexo deploy
+</code></pre>
+<h3 id="部署到Github上"><a href="#部署到Github上" class="headerlink" title="部署到Github上"></a>部署到Github上</h3><h4 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h4><p>github 有个功能叫 Github Pages，可以使用当前账号的名称作为二级域名建立一个自己的网站，前提是这个仓库的名字是 your_name.github.io 这种格式，your_name是你的github账户名。</p>
+<h4 id="部署到github上"><a href="#部署到github上" class="headerlink" title="部署到github上"></a>部署到github上</h4><p>安装 hexo-deployer-git</p>
+<pre><code class="bash">$ npm i hexo-deployer-git --save
+</code></pre>
+<p>修改配置项：</p>
+<pre><code class="bash">_config.yml
+...
+# hexo-deployer-git config
+deploy:
+  type: git
+  repo: &lt;repository url&gt; #库（Repository）地址
+  branch: [branch] #分支名称。如果您使用的是 GitHub 或 GitCafe 的话，程序会尝试自动检测。
+  message: [message] #自定义提交信息 (默认为 Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }})
+</code></pre>
+<p>运行</p>
+<pre><code class="bash">$ hexo deploy
+</code></pre>
+<p>即可将生成的静态文件部署到github上。</p>
+<p>访问自己的 your_name.github.io 即可访问自己的博客了。</p>
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=https://guyunxiang.cc/2017/03/24/使用Hexo搭建Github个人博客/,尘飞扬,使用Hexo搭建Github个人博客" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/03/24/%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85Nodejs/" title="如何安装Nodejs" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2015/09/11/HTML5%E8%B0%83%E7%94%A8%E6%89%8B%E6%9C%BA%E7%9B%B8%E6%9C%BA%E6%8B%8D%E7%85%A7/" title="HTML5调用手机相机拍照" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
+  var gitalk = new Gitalk({
+    clientID: '8e90905eef1e8a7bfeb1',
+    clientSecret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+    repo: 'guyunxiang.github.io',
+    owner: 'guyunxiang',
+    admin: ['guyunxiang'],
+    id: location.pathname
+  });
+  gitalk.render('gitalk-container')
+})();</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  } else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script></body></html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>HTML5调用手机相机拍照 · 尘飞扬</title><meta name="renderer" content="webkit"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="顾云翔"><meta name="keywords" content="Hexo,HTML,CSS,JavaScript,FrontEnd,顾云翔,前端开发,个人博客"><meta name="description" content="前端调用手机相机拍照实现方式常见有两种：
+一种是通过video控件，通过捕获video的流，截取video中的图像实现拍照，
+还有一种是通过 input[type=’file’] 控件调用移动端的摄像头，实现拍照。
+两种方法各有利弊，第一种可以实现对拍照界面的重写（比如添加拍照界面的遮罩层提示框等）"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="LBNq4uFHpAudYV9fvkrbaV00z9y6s4BxIFbPhLFDKdI" name="google-site-verification"><meta content="b14c29f71f435bff7849690cb5254199" name="360-site-verification"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/highlight.css"><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="followme"><a href="http://github.com/guyunxiang" target="_block">follow me</a></div><div class="logo-title"><div class="title"><img src="/images/logo@2x.png"><h3 title=""><a href="/">尘飞扬</a></h3><div class="description"><p>细若微尘，亦可飞扬</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/guyunxiang" target="_block"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/guyunxiang" target="_block"><i class="fa fa-github"></i></a></li><li><a href="http://weibo.com/guyunxing32" target="_block"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><span>© <a href="/">2017 - 2018 </a>尘飞扬</span><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">published with Hexo !</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="search search-pc"><input type="text" placeholder="标题或内容" maxlength="100"><i class="fa fa-search"></i></div><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="https://avatars2.githubusercontent.com/u/7507079?v=3&amp;s=460"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>HTML5调用手机相机拍照</a></h3></div><div class="post-information"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2015-09-11</span><i class="fa fa-tag"></i><a href="/categories/前端技术/" title="前端技术" class="tag">前端技术 </a><a href="/tags/html5/" title="html5" class="tag">html5 </a></div></div></div><div class="post-content"><h3 id="前端调用手机相机拍照"><a href="#前端调用手机相机拍照" class="headerlink" title="前端调用手机相机拍照"></a>前端调用手机相机拍照</h3><p>实现方式常见有两种：</p>
+<p>一种是通过video控件，通过捕获video的流，截取video中的图像实现拍照，</p>
+<p>还有一种是通过 input[type=’file’] 控件调用移动端的摄像头，实现拍照。</p>
+<p>两种方法各有利弊，第一种可以实现对拍照界面的重写（比如添加拍照界面的遮罩层提示框等）</p>
+<p>但是，第一种方式在 iPhone 环境下不兼容，不能使用。</p>
+<p>第二种方式实际上是调用input[type=’file’]，会弹出一个选择框让用户选择是调用相机还是调用相册，</p>
+<p>好处就是兼容优于上一种，不好的地方就是这种方法无法控制拍照，想要在移动端实现只能拍照不能选择照片或者在拍照界面添加引导遮罩层的方法是行不通了。</p>
+<p>这里说一下第二种方式的实现方式：</p>
+<p>首先在页面上添加一个input控件实现调用相机。</p>
+<pre><code class="html">&lt;input id=&quot;takepicture&quot; type=&quot;file&quot; accept=&quot;image/*&quot; capture=&quot;camera&quot; style=&quot;display: none&quot;&gt;
+</code></pre>
+<p>自定义方式调用相机：</p>
+<pre><code class="javascript">var takePictureOnclick = function(){
+  var takePicture = document.getElementById(&#39;takepicture&#39;);
+  ... // 添加需要处理的代码
+  takePicture.click();
+}
+</code></pre>
+<p>然后在 js 中添加对这个 input 的 onchange 事件，监听拍完照之后获取照片的流。</p>
+<pre><code class="javascript">// 监听照片拍摄,并获取照片流
+var takePicture = document.getElementById(&#39;takepicture&#39;);
+var takePictureUrl = function () {
+  takePicture.onchange = function (event) {
+    var files = event.target.files, file;
+    if (files &amp;&amp; files.length &gt; 0) {
+      file = files[0];
+      try {
+        var URL = window.URL || window.webkitURL;
+        var blob = URL.createObjectURL(file);　　// 获取照片的文件流
+        compressPicture(blob);　　// 压缩照片
+      }
+      catch (e) {
+        try {
+          var fileReader = new FileReader();
+          fileReader.onload = function (event) {　　　　// 获取照片的base64编码
+            compressPicture(event.target.result);　　// 压缩照片
+          };
+          fileReader.readAsDataURL(file);
+        }
+        catch (e) {
+          alert(common.MESSAGE.title.error, &#39;拍照失败,请联系客服或尝试更换手机再试!&#39;);
+        }
+      }
+    }
+  }
+}();
+</code></pre>
+<p>这个 onchange 方法中，通过两种方式捕获用户拍照完之后的照片，第一种是捕获照片的文件流（存在一定兼容性问题），如果第一种方式不兼容则使用第二种方式获取照片的base64编码（这种方式兼容性较高），保险一点，两种方式都是用。</p>
+<p>以上，就完成了前端的调用相机并拍照的功能。</p>
+<hr>
+<h3 id="前端照片压缩处理"><a href="#前端照片压缩处理" class="headerlink" title="前端照片压缩处理"></a>前端照片压缩处理</h3><p>前端的照片压缩没有什么好的解决方案。目前有的是通过canvas的两个API实现照片的压缩处理。</p>
+<p>解决兼容性需要用到两个插件：</p>
+<p><a href="https://github.com/guyunxiang/html_compress/tree/master/lib" target="_blank" rel="noopener">点击这里</a></p>
+<p>实现代码：</p>
+<pre><code class="javascript">var compressPicture = function (blob) {
+  var quality = 0.5, image = new Image();
+  image.src = blob;
+  image.onload = function () {
+    var that = this;
+    // 生成比例
+    var width = that.width, height = that.height;
+    width = width / 4;
+    height = height / 4;
+    // 生成canvas画板
+    var canvas = document.createElement(&#39;canvas&#39;);
+    var ctx = canvas.getContext(&#39;2d&#39;);
+    canvas.width = width;
+    canvas.height = height;
+    ctx.drawImage(that, 0, 0, width, height);
+    // 生成base64,兼容修复移动设备需要引入mobileBUGFix.js
+    var imgurl = canvas.toDataURL(&#39;image/jpeg&#39;, quality);
+    // 修复IOS兼容问题
+    if (navigator.userAgent.match(/iphone/i)) {
+      var mpImg = new MegaPixImage(image);
+      mpImg.render(canvas, {
+        maxWidth: width,
+        maxHeight: height,
+        quality: quality
+      });
+      imgurl = canvas.toDataURL(&#39;image/jpeg&#39;, quality);
+    }
+    // 上传照片
+    uploadPicture(imgurl);
+  };
+};
+</code></pre>
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=https://guyunxiang.cc/2015/09/11/HTML5调用手机相机拍照/,尘飞扬,HTML5调用手机相机拍照" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/03/24/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BAGithub%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="使用Hexo搭建Github个人博客" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2014/12/05/JQuery1-8-3%E5%9C%A8IE9%E4%B8%8BgetAttribute%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/" title="JQuery1.8.3在IE9下getAttribute兼容问题" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
+  var gitalk = new Gitalk({
+    clientID: '8e90905eef1e8a7bfeb1',
+    clientSecret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+    repo: 'guyunxiang.github.io',
+    owner: 'guyunxiang',
+    admin: ['guyunxiang'],
+    id: location.pathname
+  });
+  gitalk.render('gitalk-container')
+})();</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  } else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script></body></html>

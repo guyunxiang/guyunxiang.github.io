@@ -1,0 +1,258 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>React组件间通讯 · 尘飞扬</title><meta name="renderer" content="webkit"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="顾云翔"><meta name="keywords" content="Hexo,HTML,CSS,JavaScript,FrontEnd,顾云翔,前端开发,个人博客"><meta name="description" content="React开发中难以避免组件之间进行数据通讯，React规定了明确的单项数据流，利用props将数据从父组件传递给自组件。所以，在父与子的组件通讯中，可以很容易的通过props实现。但是，实际开发中不仅仅只有父子关系的组件关联，还会有多种组件关联关系的数据通讯，这里整理几种组件关系下的通讯方式。
+父"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="LBNq4uFHpAudYV9fvkrbaV00z9y6s4BxIFbPhLFDKdI" name="google-site-verification"><meta content="b14c29f71f435bff7849690cb5254199" name="360-site-verification"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/highlight.css"><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="sidebar animated fadeInDown"><div class="followme"><a href="http://github.com/guyunxiang" target="_block">follow me</a></div><div class="logo-title"><div class="title"><img src="/images/logo@2x.png"><h3 title=""><a href="/">尘飞扬</a></h3><div class="description"><p>细若微尘，亦可飞扬</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/guyunxiang" target="_block"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/guyunxiang" target="_block"><i class="fa fa-github"></i></a></li><li><a href="http://weibo.com/guyunxing32" target="_block"><i class="fa fa-weibo"></i></a></li></ul><div class="footer"><span>© <a href="/">2017 - 2018 </a>尘飞扬</span><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">published with Hexo !</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/categories">分类</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="search search-pc"><input type="text" placeholder="标题或内容" maxlength="100"><i class="fa fa-search"></i></div><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="https://avatars2.githubusercontent.com/u/7507079?v=3&amp;s=460"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>React组件间通讯</a></h3></div><div class="post-information"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-07</span><i class="fa fa-tag"></i><a href="/categories/前端技术/" title="前端技术" class="tag">前端技术 </a><a href="/tags/javascript/" title="javascript" class="tag">javascript </a><a href="/tags/react/" title="react" class="tag">react </a></div></div></div><div class="post-content"><p>React开发中难以避免组件之间进行数据通讯，React规定了明确的单项数据流，利用props将数据从父组件传递给自组件。所以，在父与子的组件通讯中，可以很容易的通过props实现。但是，实际开发中不仅仅只有父子关系的组件关联，还会有多种组件关联关系的数据通讯，这里整理几种组件关系下的通讯方式。</p>
+<h3 id="父组件向子组件通讯"><a href="#父组件向子组件通讯" class="headerlink" title="父组件向子组件通讯"></a>父组件向子组件通讯</h3><p>父组件向子组件的通讯是单向的，react提供了props来进行父到子的数据传递。</p>
+<p>父组件</p>
+<pre><code class="javascript">import Child from &#39;./Child&#39;;
+class Parent extends React.Component {
+  render() {
+    const msg = &#39;hello world&#39;;
+    return (
+      &lt;Child msg /&gt;
+    );
+  }
+}
+</code></pre>
+<p>子组件</p>
+<pre><code class="javascript">class Child extends React.Component {
+  render() {
+    const { msg } = this.props;
+    return (
+      &lt;div&gt;{msg}&lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>这个例子可以看出，子组件可以直接调用this.props.msg使用父组件传递进来的数据。<br>上级的props和state改变，会导致子组件的生命周期改变。</p>
+<h3 id="子组件向父组件通讯"><a href="#子组件向父组件通讯" class="headerlink" title="子组件向父组件通讯"></a>子组件向父组件通讯</h3><p>子组件向父组件通讯仍然可以通过props进行，以回调函数的形式进行数据交互，父组件讲一个函数以props传递给组数据。参数为子组件传递过来的数据，子组件出发通讯时，调用父组件props方法，把数据作为参数传过去，触发由子组件向父组件的通讯。</p>
+<p>父组件</p>
+<pre><code class="javascript">import Child from &#39;./Child&#39;;
+class Parent extends React.Component {
+  render () {
+    return (
+      &lt;Child
+        onChange={(name) =&gt; {
+          console.log(name);
+        }}
+      /&gt;
+    )
+  }
+}
+</code></pre>
+<p>子组件</p>
+<pre><code class="javascript">class Child extends React.Component {
+  handleChange(e) {
+    this.props.onChange(e.target.value);
+  }
+  render() {
+    &lt;div&gt;
+      &lt;input type=&quot;text&quot; onChange={this.handleChange.bind(this)}&gt;
+    &lt;/div&gt;
+  }
+}
+</code></pre>
+<p>上面例子可以看出，子组件中input出发onchange事件时，调用父组件传递的onChange方法，并且把值传递过去，实现子组件向父组件的通讯。</p>
+<h3 id="兄弟组件间通讯"><a href="#兄弟组件间通讯" class="headerlink" title="兄弟组件间通讯"></a>兄弟组件间通讯</h3><p>两个组件之间没有联系，但有相同的父组件之间通讯，这里整合了父组件向子组件通讯以及子组件向父组件通讯的方法，其中一个组件向共同的父组件进行通讯，然后父组件再向对应的子组件进行通讯实现兄弟组件间的数据通讯。</p>
+<pre><code class="javascript">import Child1 from &#39;./Child1&#39;;
+import Child2 from &#39;./Child2&#39;;
+
+class Parent extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: &#39;&#39;
+    };
+  }
+
+  handleChange(value) {
+    this.setState({
+      message: value
+    });
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;Child1 onChange={this.handleChange.bind(this)} /&gt;
+        &lt;Child2 msg={this.state.message} /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>Child1组件</p>
+<pre><code class="javascript">class Child1 extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  handleChange(e) {
+    console.log(e.target.value);
+    this.props.onChange(e.target.value);
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;input type=&quot;text&quot; onChange={this.handleChange.bind(this)}/&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>Child2组件</p>
+<pre><code class="javascript">class Child2 extends React.Component {
+  render() {
+    return (
+      &lt;div&gt;
+        { this.props.msg }
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>以上例子，Child1的inputonChange事件会将message传递给Parent组件，Parent收到message后，更新state，再传递给Child2，实现兄弟组件之间的通讯。</p>
+<h3 id="其他方式实现组件间通讯"><a href="#其他方式实现组件间通讯" class="headerlink" title="其他方式实现组件间通讯"></a>其他方式实现组件间通讯</h3><h4 id="Flux-和-Redux"><a href="#Flux-和-Redux" class="headerlink" title="Flux 和 Redux"></a>Flux 和 Redux</h4><p><a href="https://github.com/facebook/flux" target="_blank" rel="noopener">Flux</a> 是 Facebook 推出的一种应用架构方案，用以组织代码，安排内部逻辑，是项目更便于开发和维护。</p>
+<p><a href="http://redux.js.org/" target="_blank" rel="noopener">Redux</a> 是 JavaScript 状态容器，提供可预测化得状态管理。可以让你构建一致化的应用，运行于不同的环境，并且易于测试。</p>
+<h4 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h4><p>观察者模式也叫做<strong><em>发布者-订阅者模式</em></strong>，发布者发布事件，订阅者监听事件并作出反应。</p>
+<blockquote>
+<p>Redux 内部的实现，其实也是基于观察者模式的，reducer 的调用结果，存储在 store 内部的 state 中，并在每一次 reducer 的调用中并作为参数传入。</p>
+</blockquote>
+<p>同样是兄弟组件之间通讯，用观察者模式进行改造，如下：</p>
+<pre><code class="javascript">class Parent extends React.Component {
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;Child1 /&gt;
+        &lt;Child2 /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>Child1组件</p>
+<pre><code class="javascript">import eventProxy from &#39;./eventProxy&#39;;
+
+class Child1 extends React.Component {
+  handleChange(e) {
+    eventProxy.trigger(&#39;msg&#39;, e.target.value);
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;input type=&quot;text&quot; onChange={this.handleChange.bind(this)}/&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>Child2组件</p>
+<pre><code class="javascript">class Child2 extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      msg: &#39;&#39;
+    };
+  }
+
+  componentDidMount() {
+    eventProxy.on(&#39;msg&#39;, (msg) =&gt; {
+      this.setState({
+        msg
+      });
+    });
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        { this.state.msg }
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>以上，同样可以实现兄弟组件之间的通讯，是不是很方便？！</p>
+<p>来看看神奇的 eventProxy 源码：</p>
+<pre><code class="javascript">export default {
+  onObj: {},
+  oneObj: {},
+  on: function(key, fn) {
+    if(this.onObj[key] === undefined) {
+      this.onObj[key] = [];
+    }
+
+    this.onObj[key].push(fn);
+  },
+  one: function(key, fn) {
+    if(this.oneObj[key] === undefined) {
+      this.oneObj[key] = [];
+    }
+
+    this.oneObj[key].push(fn);
+  },
+  off: function(key) {
+    this.onObj[key] = [];
+    this.oneObj[key] = [];
+  },
+  trigger: function() {
+    let key, args;
+    if(arguments.length == 0) {
+      return false;
+    }
+    key = arguments[0];
+    args = [].concat(Array.prototype.slice.call(arguments, 1));
+
+    if(this.onObj[key] !== undefined
+      &amp;&amp; this.onObj[key].length &gt; 0) {
+      for(let i in this.onObj[key]) {
+        this.onObj[key][i].apply(null, args);
+      }
+    }
+    if(this.oneObj[key] !== undefined
+      &amp;&amp; this.oneObj[key].length &gt; 0) {
+      for(let i in this.oneObj[key]) {
+        this.oneObj[key][i].apply(null, args);
+        this.oneObj[key][i] = undefined;
+      }
+      this.oneObj[key] = [];
+    }
+  }
+};
+</code></pre>
+<p>eventProxy中，总共有 on, one, off, trigger这4个函数：</p>
+<ul>
+<li>on, one: 用于订阅者监听相应的事件，并将事件相应时的函数作为参数，on 与 one 的唯一区别就是，one 只会触发一次，on 是每次都会触发。</li>
+<li>off: 用于解除所有订阅了某个事件的所有函数</li>
+<li>trigger: 用于发布者发布事件，将除第一参数（事件名）的其他参数，作为新的参数，触发使用 on 与 one 进行订阅的函数。</li>
+</ul>
+</div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" target="_blank" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=https://guyunxiang.cc/2017/04/07/React组件间通讯/,尘飞扬,React组件间通讯" target="_blank" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/04/09/Alias%E7%AE%80%E5%8C%96%E5%91%BD%E4%BB%A4/" title="Alias 简化命令" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/04/05/%E4%BC%8F%E9%AD%94%E8%AE%B0-%E6%96%B0%E4%BC%8F%E9%AD%94%E8%AE%B0S%E6%94%BB%E7%95%A5-%E6%B8%B8%E6%88%8F%E8%B5%84%E6%BA%90/" title="伏魔记+新伏魔记S攻略+游戏资源" class="btn">下一篇</a></li></ul></div><div id="gitalk-container"></div><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script>(function(){
+  var gitalk = new Gitalk({
+    clientID: '8e90905eef1e8a7bfeb1',
+    clientSecret: 'b119c52cd77840aaebcf3ab8d5ef129a3e1d4f6d',
+    repo: 'guyunxiang.github.io',
+    owner: 'guyunxiang',
+    admin: ['guyunxiang'],
+    id: location.pathname
+  });
+  gitalk.render('gitalk-container')
+})();</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/index.js"></script><script src="/js/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bac0458a103bcd26924a20fb93ef07bb";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  } else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script></body></html>
