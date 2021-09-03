@@ -10,9 +10,9 @@ script:
   - hexo generate # generate static files
 deploy:
   provider: pages
-  skip-cleanup: true
-  github-token: $GH_TOKEN
-  keep-history: true
+  token: $GH_TOKEN
+  skip_cleanup: true
+  keep_history: true
   on:
     branch: master
-  local-dir: public
+  local_dir: public

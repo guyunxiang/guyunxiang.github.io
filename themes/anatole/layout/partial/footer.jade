@@ -1,6 +1,7 @@
 .footer
   span © 
-    a(href="/") 2017 - 2018 
+    - var currentFullYear = new Date().getFullYear()
+    a(href="/") 2017 - !{currentFullYear} 
     = config.title
   .by_farbox
     a(href="https://hexo.io/zh-cn/", target="_blank") published with Hexo !
